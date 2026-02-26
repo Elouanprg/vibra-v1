@@ -1,0 +1,415 @@
+/* Event Detail Modal - Native <dialog> */
+
+/* ===== CLICKABLE INDICATOR ===== */
+[data-event-id] {
+  cursor: pointer;
+}
+
+/* Wrapper for bare <img> elements with data-event-id */
+.event-trigger-wrap {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.event-trigger-wrap > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Small icon indicator */
+.event-indicator {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 50%;
+  color: #fff;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.event-indicator svg {
+  width: 14px;
+  height: 14px;
+}
+
+[data-event-id]:hover .event-indicator,
+.event-trigger-wrap:hover .event-indicator {
+  opacity: 0.85;
+  transform: scale(1);
+}
+
+/* ===== DIALOG RESET ===== */
+dialog.event-modal {
+  border: none;
+  padding: 0;
+  background: transparent;
+  max-width: 100vw;
+  max-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 60px;
+  overflow: visible;
+}
+
+/* Native backdrop */
+dialog.event-modal::backdrop {
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Container */
+.event-modal__container {
+  position: relative;
+  width: 96%;
+  max-width: 1500px;
+  max-height: calc(100vh - 100px);
+  background: var(--bg-primary);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-2xl);
+  overflow: hidden;
+}
+
+/* Close button */
+.event-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: var(--radius-full);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.event-modal__close:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: scale(1.1);
+}
+
+.event-modal__close svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Content layout */
+.event-modal__content {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  max-height: calc(100vh - 100px);
+}
+
+/* Gallery (left) */
+.event-modal__gallery {
+  position: relative;
+  background: #111;
+  min-height: 500px;
+  max-height: calc(100vh - 100px);
+}
+
+.event-modal__gallery .swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.event-modal__gallery .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-modal__gallery .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Image-specific centering */
+.event-modal__gallery img[src*="pro-loreal/galerie-2"] {
+  object-position: center 30%;
+}
+
+.event-modal__gallery img[src*="pro-loreal/principale"] {
+  object-position: center 20%;
+}
+
+.event-modal__gallery img[src*="pro-gendarmerie/galerie-1"] {
+  object-position: center 45%;
+}
+
+.event-modal__gallery img[src*="pro-ricard/principale"] {
+  object-position: center 35%;
+}
+
+.event-modal__gallery img[src*="pro-safran/principale"] {
+  object-position: center 40%;
+}
+
+/* Swiper navigation arrows */
+.event-modal__gallery .swiper-button-prev,
+.event-modal__gallery .swiper-button-next {
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: var(--radius-full);
+  transition: background 0.2s ease;
+}
+
+.event-modal__gallery .swiper-button-prev:hover,
+.event-modal__gallery .swiper-button-next:hover {
+  background: var(--orange-primary);
+}
+
+.event-modal__gallery .swiper-button-prev::after,
+.event-modal__gallery .swiper-button-next::after {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Swiper pagination */
+.event-modal__gallery .swiper-pagination-bullet {
+  background: #fff;
+  opacity: 0.5;
+  width: 8px;
+  height: 8px;
+  transition: all 0.2s ease;
+}
+
+.event-modal__gallery .swiper-pagination-bullet-active {
+  background: var(--orange-primary);
+  opacity: 1;
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* Info panel (right) */
+.event-modal__info {
+  padding: 48px;
+  overflow-y: auto;
+  max-height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Category badge */
+.event-modal__category {
+  display: inline-block;
+  background: var(--orange-primary);
+  color: #fff;
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+  margin-bottom: 16px;
+  width: fit-content;
+}
+
+/* Title */
+.event-modal__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  color: var(--text-primary);
+  line-height: var(--leading-tight);
+  margin-bottom: 10px;
+}
+
+/* Subtitle */
+.event-modal__subtitle {
+  font-size: clamp(1rem, 1.3vw, 1.25rem);
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+/* Meta (location + date) */
+.event-modal__meta {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.event-modal__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+}
+
+.event-modal__meta-item svg {
+  width: 16px;
+  height: 16px;
+  color: var(--orange-primary);
+  flex-shrink: 0;
+}
+
+/* Divider */
+.event-modal__divider {
+  width: 60px;
+  height: 3px;
+  background: var(--orange-primary);
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+
+/* Description */
+.event-modal__description {
+  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 36px;
+  flex: 1;
+}
+
+/* CTA button */
+.event-modal__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--orange-primary);
+  color: #fff;
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  padding: 14px 28px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  width: fit-content;
+}
+
+.event-modal__cta:hover {
+  background: var(--orange-dark);
+  box-shadow: 0 6px 16px rgba(255, 107, 53, 0.25);
+  color: #fff;
+}
+
+.event-modal__cta svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ===== HIDE INDICATOR ON PORTFOLIO ===== */
+[data-page="portfolio"] .event-indicator {
+  display: none !important;
+}
+
+/* ===== DARK MODE ===== */
+[data-theme="dark"] .event-modal__container {
+  background: #1e1e1e;
+}
+
+[data-theme="dark"] .event-modal__gallery {
+  background: #111;
+}
+
+[data-theme="dark"] .event-modal__close {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] .event-modal__close:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ===== RESPONSIVE ===== */
+
+/* Tablet & below */
+@media (max-width: 768px) {
+  dialog.event-modal {
+    align-items: flex-end;
+    padding-top: 0;
+  }
+
+  .event-modal__container {
+    width: 100%;
+    max-width: 100%;
+    max-height: 88vh;
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+  }
+
+  .event-modal__content {
+    grid-template-columns: 1fr;
+    max-height: 88vh;
+    overflow-y: auto;
+  }
+
+  .event-modal__gallery {
+    min-height: 240px;
+    max-height: 280px;
+  }
+
+  .event-modal__info {
+    padding: 24px;
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  .event-modal__title {
+    font-size: var(--text-2xl);
+  }
+
+  .event-modal__subtitle {
+    font-size: var(--text-base);
+  }
+
+  .event-modal__close {
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .event-modal__gallery {
+    min-height: 200px;
+    max-height: 240px;
+  }
+
+  .event-modal__info {
+    padding: 20px;
+  }
+
+  .event-modal__title {
+    font-size: var(--text-xl);
+  }
+
+  .event-modal__meta {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .event-modal__cta {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VIBRA - Demandez un devis gratuit pour votre événement à Bordeaux, Paris ou Côte d'Azur. DJ, sonorisation, éclairage et animation sur mesure.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://vibra-events.com/devis.html">
+  <title>VIBRA - Devis Gratuit | Événements sur mesure Bordeaux</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo/vibra-icon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/logo/logo_porge.png">
+  <link rel="apple-touch-icon" href="assets/images/logo/logo_porge.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <style>
+    /* ===== GLOBAL ===== */
+    html, body { max-width: 100vw; overflow-x: hidden; background: #FFF5EE; }
+    *, *::before, *::after { box-sizing: border-box; }
+
+    /* ===== ANIMATED BACKGROUND ===== */
+    .dv-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .dv-bg__orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+    }
+    .dv-bg__orb--1 {
+      width: 500px; height: 500px;
+      background: rgba(232, 108, 36, 0.08);
+      top: -100px; right: -100px;
+      animation: dvOrbA 16s ease-in-out infinite alternate;
+    }
+    .dv-bg__orb--2 {
+      width: 400px; height: 400px;
+      background: rgba(255, 160, 80, 0.06);
+      bottom: 20%; left: -80px;
+      animation: dvOrbB 20s ease-in-out infinite alternate;
+    }
+    .dv-bg__orb--3 {
+      width: 350px; height: 350px;
+      background: rgba(232, 108, 36, 0.05);
+      top: 50%; right: -50px;
+      animation: dvOrbC 14s ease-in-out infinite alternate;
+    }
+    @keyframes dvOrbA { 0% { transform: translate(0,0); } 100% { transform: translate(-60px,80px); } }
+    @keyframes dvOrbB { 0% { transform: translate(0,0); } 100% { transform: translate(50px,-60px); } }
+    @keyframes dvOrbC { 0% { transform: translate(0,0); } 100% { transform: translate(-40px,-50px); } }
+
+    /* ===== PAGE HEADER ===== */
+    .dv-header {
+      padding: 140px 20px 30px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .dv-header__title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(32px, 5vw, 56px);
+      text-transform: uppercase;
+      color: #000;
+      margin: 0 0 10px;
+    }
+    .dv-header__sub {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(18px, 2.5vw, 26px);
+      text-transform: uppercase;
+      color: #000;
+      display: inline-block;
+      padding-bottom: 8px;
+      position: relative;
+    }
+    .dv-header__sub::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%; height: 4px;
+      background: #e86c24;
+      border-radius: 2px;
+    }
+    .dv-header__desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #666;
+      max-width: 600px;
+      margin: 20px auto 0;
+      line-height: 1.7;
+    }
+
+    /* ===== 2-COLUMN LAYOUT ===== */
+    .dv-layout {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px 60px;
+      align-items: flex-start;
+    }
+
+    /* ===== SIDEBAR ===== */
+    .dv-sidebar {
+      width: 340px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 100px;
+    }
+    .dv-sidebar__section {
+      margin-bottom: 32px;
+    }
+    .dv-sidebar__title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 20px;
+      text-transform: uppercase;
+      color: #1a1a1a;
+      margin: 0 0 6px;
+    }
+    .dv-sidebar__subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 13.5px;
+      color: #888;
+      margin: 0 0 24px;
+      line-height: 1.6;
+    }
+
+    /* Service items */
+    .dv-service {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .dv-service__icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 107, 53, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .dv-service__icon svg {
+      width: 22px;
+      height: 22px;
+      fill: #FF6B35;
+    }
+    .dv-service__text {
+      flex: 1;
+      padding-top: 2px;
+    }
+    .dv-service__name {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: #1a1a1a;
+      margin: 0 0 3px;
+    }
+    .dv-service__desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      color: #999;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Sidebar divider */
+    .dv-sidebar__divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(0,0,0,0.06);
+      margin: 8px 0 28px;
+    }
+
+    /* Sidebar contact cards (stacked) */
+    .dv-sidebar-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .dv-sidebar-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,0.04);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .dv-sidebar-contact-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    }
+    .dv-sidebar-contact-item__icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 107, 53, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .dv-sidebar-contact-item__icon svg {
+      width: 18px;
+      height: 18px;
+      fill: #FF6B35;
+    }
+    .dv-sidebar-contact-item__info {
+      flex: 1;
+    }
+    .dv-sidebar-contact-item__label {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 12.5px;
+      color: #1a1a1a;
+      margin: 0 0 2px;
+    }
+    .dv-sidebar-contact-item__value {
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      color: #888;
+      margin: 0;
+    }
+    .dv-sidebar-contact-item__value a {
+      color: #FF6B35;
+      text-decoration: none;
+    }
+    .dv-sidebar-contact-item__value a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== FORM CONTAINER ===== */
+    .dv-form-wrapper {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      min-width: 0;
+    }
+    .dv-form-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 48px 44px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    /* ===== FORM FIELDS ===== */
+    .dv-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .dv-row--full {
+      grid-template-columns: 1fr;
+    }
+    .dv-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .dv-label {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      color: #1a1a1a;
+      letter-spacing: 0.2px;
+    }
+    .dv-label .dv-required {
+      color: #FF6B35;
+      margin-left: 2px;
+    }
+    .dv-input,
+    .dv-select,
+    .dv-textarea {
+      font-family: 'Inter', sans-serif;
+      font-size: 14.5px;
+      color: #1a1a1a;
+      background: #f9f9f9;
+      border: 1.5px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 13px 16px;
+      transition: all 0.25s ease;
+      outline: none;
+      width: 100%;
+    }
+    .dv-input:focus,
+    .dv-select:focus,
+    .dv-textarea:focus {
+      border-color: #FF6B35;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+    }
+    .dv-input::placeholder,
+    .dv-textarea::placeholder {
+      color: #bbb;
+    }
+    .dv-select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%23999'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+    .dv-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* ===== PHONE INPUT ===== */
+    .dv-phone-wrapper {
+      display: flex;
+      align-items: stretch;
+      border: 1.5px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      background: #f9f9f9;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+    .dv-phone-wrapper:focus-within {
+      border-color: #FF6B35;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+    }
+    .dv-phone-prefix {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 14px;
+      background: rgba(0,0,0,0.02);
+      border-right: 1px solid rgba(0,0,0,0.06);
+      flex-shrink: 0;
+    }
+    .dv-flag {
+      width: 24px;
+      height: 16px;
+      object-fit: cover;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .dv-prefix-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 14.5px;
+      color: #1a1a1a;
+      font-weight: 500;
+    }
+    .dv-input--phone {
+      border: none;
+      background: transparent;
+      border-radius: 0;
+      padding: 13px 16px;
+    }
+    .dv-input--phone:focus {
+      box-shadow: none;
+      border-color: transparent;
+      background: transparent;
+    }
+    .dv-prefix-input {
+      font-family: 'Inter', sans-serif;
+      font-size: 14.5px;
+      color: #1a1a1a;
+      font-weight: 500;
+      border: none;
+      background: transparent;
+      width: 48px;
+      outline: none;
+      padding: 0;
+      cursor: pointer;
+    }
+    .dv-prefix-arrow {
+      flex-shrink: 0;
+      margin-left: 2px;
+      transition: transform 0.2s ease;
+    }
+    .dv-phone-prefix { cursor: pointer; }
+
+    /* Country dropdown */
+    .dv-country-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: #fff;
+      border: 1.5px solid rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      margin-top: 4px;
+      max-height: 280px;
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
+    }
+    .dv-country-dropdown.open { display: flex; }
+    .dv-field { position: relative; }
+    .dv-country-search-wrap {
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .dv-country-search {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      width: 100%;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 8px;
+      padding: 8px 12px;
+      outline: none;
+    }
+    .dv-country-search:focus { border-color: #FF6B35; }
+    .dv-country-list {
+      overflow-y: auto;
+      max-height: 220px;
+    }
+    .dv-country-opt {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 13.5px;
+      color: #333;
+      transition: background 0.15s;
+    }
+    .dv-country-opt:hover { background: rgba(255, 107, 53, 0.06); }
+    .dv-country-opt__flag { width: 22px; height: 15px; object-fit: cover; border-radius: 2px; flex-shrink: 0; }
+    .dv-country-opt__code { color: #999; font-size: 12px; min-width: 40px; }
+
+    /* ===== CUSTOM DATE PICKER ===== */
+    .dv-date-trigger {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 16px;
+      background: #f9f9f9;
+      border: 1.5px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .dv-date-trigger:hover { border-color: rgba(0,0,0,0.15); }
+    .dv-date-trigger.active {
+      border-color: #FF6B35;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(255,107,53,0.1);
+    }
+    .dv-date-icon { flex-shrink: 0; }
+    .dv-date-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 14.5px;
+      color: #bbb;
+    }
+    .dv-date-text.filled { color: #1a1a1a; }
+    .dv-calendar {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 50;
+      background: #fff;
+      border: 1.5px solid rgba(0,0,0,0.08);
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+      margin-top: 6px;
+      padding: 20px;
+      width: 320px;
+    }
+    .dv-calendar.open { display: block; }
+    .dv-cal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .dv-cal-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      color: #1a1a1a;
+      text-transform: capitalize;
+    }
+    .dv-cal-arrow {
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      transition: all 0.2s;
+    }
+    .dv-cal-arrow:hover { background: rgba(255,107,53,0.08); color: #FF6B35; }
+    .dv-cal-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .dv-cal-weekdays span {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: #999;
+      text-transform: uppercase;
+      padding: 4px 0;
+    }
+    .dv-cal-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+    }
+    .dv-cal-day {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 13.5px;
+      color: #333;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .dv-cal-day:hover { background: rgba(255,107,53,0.08); }
+    .dv-cal-day.empty { pointer-events: none; }
+    .dv-cal-day.today { font-weight: 700; color: #FF6B35; }
+    .dv-cal-day.selected {
+      background: #FF6B35;
+      color: #fff;
+      font-weight: 600;
+    }
+    .dv-cal-day.past { color: #ccc; pointer-events: none; }
+
+    /* ===== RADIO BUTTONS ===== */
+    .dv-radios {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .dv-radio {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: #f9f9f9;
+      border: 1.5px solid rgba(0,0,0,0.06);
+      transition: all 0.25s ease;
+    }
+    .dv-radio:hover {
+      border-color: rgba(255, 107, 53, 0.3);
+      background: rgba(255, 107, 53, 0.03);
+    }
+    .dv-radio input[type="radio"] {
+      display: none;
+    }
+    .dv-radio__dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+    .dv-radio__dot::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #FF6B35;
+      opacity: 0;
+      transform: scale(0);
+      transition: all 0.2s ease;
+    }
+    .dv-radio input:checked + .dv-radio__dot {
+      border-color: #FF6B35;
+    }
+    .dv-radio input:checked + .dv-radio__dot::after {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .dv-radio__label {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #444;
+    }
+    .dv-radio input:checked ~ .dv-radio__label {
+      color: #1a1a1a;
+      font-weight: 500;
+    }
+
+    /* Autre event type input */
+    .dv-autre-wrap {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, margin-top 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+      margin-top: 0;
+    }
+    .dv-autre-wrap.visible {
+      max-height: 60px;
+      opacity: 1;
+      margin-top: 10px;
+    }
+    .dv-autre-input {
+      font-family: 'Inter', sans-serif;
+      font-size: 13.5px;
+      color: #1a1a1a;
+      background: #f9f9f9;
+      border: 1.5px solid rgba(0,0,0,0.08);
+      border-radius: 10px;
+      padding: 10px 14px;
+      width: 100%;
+      outline: none;
+      transition: all 0.25s ease;
+    }
+    .dv-autre-input:focus {
+      border-color: #FF6B35;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+    }
+    .dv-autre-input::placeholder {
+      color: #bbb;
+    }
+
+    /* ===== SUBMIT BUTTON ===== */
+    .dv-submit-row {
+      margin-top: 32px;
+      text-align: center;
+    }
+    .dv-submit {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: #fff;
+      background: #FF6B35;
+      border: none;
+      padding: 16px 52px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 16px rgba(255, 107, 53, 0.25);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .dv-submit:hover {
+      background: #ff8c50;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 107, 53, 0.4);
+    }
+    .dv-submit:active {
+      transform: translateY(0);
+    }
+    .dv-submit svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* ===== SUCCESS MESSAGE ===== */
+    .dv-success {
+      display: none;
+      text-align: center;
+      padding: 60px 30px;
+    }
+    .dv-success.visible {
+      display: block;
+    }
+    .dv-success__icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(255, 107, 53, 0.1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .dv-success__icon svg {
+      width: 36px;
+      height: 36px;
+      fill: #FF6B35;
+    }
+    .dv-success__title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 24px;
+      color: #1a1a1a;
+      margin: 0 0 10px;
+    }
+    .dv-success__text {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: #666;
+      line-height: 1.7;
+      margin: 0 0 28px;
+    }
+    .dv-success__btn {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: #FF6B35;
+      border: 2px solid #FF6B35;
+      padding: 12px 32px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .dv-success__btn:hover {
+      background: #FF6B35;
+      color: #fff;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .dv-layout {
+        flex-direction: column;
+        padding: 0 24px 40px;
+        gap: 32px;
+        align-items: center;
+      }
+      .dv-sidebar {
+        width: 100%;
+        max-width: 600px;
+        position: relative;
+        top: 0;
+        order: 2;
+      }
+      .dv-form-wrapper {
+        width: 100%;
+        max-width: 600px;
+        order: 1;
+      }
+      .dv-sidebar-contact {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .dv-sidebar-contact-item {
+        flex: 1;
+        min-width: 200px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .dv-header { padding: 110px 15px 25px; }
+      .dv-layout { padding: 0 16px 40px; gap: 24px; }
+      .dv-form-card { padding: 32px 24px; border-radius: 20px; }
+      .dv-row { grid-template-columns: 1fr; }
+
+      /* Sidebar compact sur mobile */
+      .dv-sidebar__subtitle { display: none; }
+      .dv-service__desc { display: none; }
+      .dv-service { margin-bottom: 10px; gap: 10px; }
+      .dv-service__icon { width: 36px; height: 36px; border-radius: 10px; }
+      .dv-service__icon svg { width: 18px; height: 18px; }
+      .dv-service__name { font-size: 13px; }
+      .dv-sidebar__section { margin-bottom: 20px; }
+      .dv-sidebar__divider { margin: 4px 0 16px; }
+      .dv-sidebar__title { font-size: 16px; }
+      .dv-sidebar-contact { flex-direction: column; }
+      .dv-sidebar-contact-item { min-width: auto; padding: 10px 14px; }
+      .dv-sidebar-contact-item__icon { width: 34px; height: 34px; border-radius: 8px; }
+      .dv-sidebar-contact-item__icon svg { width: 16px; height: 16px; }
+
+      /* Cacher la section "Contactez-nous" title sur mobile */
+      .dv-sidebar__section:last-child > .dv-sidebar__title { font-size: 14px; }
+      .dv-sidebar__section:last-child > .dv-sidebar__subtitle { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .dv-header { padding: 100px 12px 20px; }
+      .dv-form-card { padding: 24px 18px; }
+      .dv-submit { padding: 14px 36px; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-to-content" data-i18n="nav.skip">Aller au contenu principal</a>
+
+  <header class="header" id="header">
+    <div class="header-container">
+      <a href="index.html" class="logo"><img src="assets/images/logo/logo_porge.png" alt="VIBRA" class="logo-image"></a>
+      <nav class="nav-desktop">
+        <ul class="nav-menu">
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.prestations">Prestations</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
+            <ul class="dropdown-menu">
+              <li><a href="evenements-professionnels.html" class="nav-link" data-i18n="nav.professionnels">Professionnels</a></li>
+              <li><a href="evenements-particuliers.html" class="nav-link" data-i18n="nav.particuliers">Particuliers</a></li>
+              <li><a href="prestations-techniques.html" class="nav-link" data-i18n="nav.son-lumiere">Son & Lumière</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.artistes">Artistes</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
+            <ul class="dropdown-menu">
+              <li><a href="equipe-djs.html" class="nav-link" data-i18n="nav.djs">DJs</a></li>
+              <li><a href="equipe-solo-groupes.html" class="nav-link" data-i18n="nav.solo-groupes">Solo & Groupes</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a href="portfolio.html" class="nav-link" data-i18n="nav.realisations">Réalisations</a></li>
+          <li class="nav-item"><a href="a-propos.html" class="nav-link" data-i18n="nav.a-propos">À propos</a></li>
+          <li class="nav-item"><a href="mix-playlists.html" class="nav-link" data-i18n="nav.nos-mixs">Nos mixs</a></li>
+        </ul>
+      </nav>
+      <div class="header-right">
+        <a href="devis.html" class="btn btn-primary active" data-i18n="nav.devis">Devis en ligne</a>
+        <div class="language-switcher">
+          <button class="lang-btn active" data-lang="fr">FR</button>
+          <span class="lang-separator">/</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+      </div>
+      <button class="menu-toggle"><span></span><span></span><span></span></button>
+    </div>
+    <nav class="nav-mobile">
+      <ul class="nav-menu">
+        <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.prestations">Prestations</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="evenements-professionnels.html" class="nav-link" data-i18n="nav.professionnels">Professionnels</a></li><li><a href="evenements-particuliers.html" class="nav-link" data-i18n="nav.particuliers">Particuliers</a></li><li><a href="prestations-techniques.html" class="nav-link" data-i18n="nav.son-lumiere">Son & Lumière</a></li></ul></li>
+        <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.artistes">Artistes</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="equipe-djs.html" class="nav-link" data-i18n="nav.djs">DJs</a></li><li><a href="equipe-solo-groupes.html" class="nav-link" data-i18n="nav.solo-groupes">Solo & Groupes</a></li></ul></li>
+        <li class="nav-item"><a href="portfolio.html" class="nav-link" data-i18n="nav.realisations">Réalisations</a></li>
+        <li class="nav-item"><a href="a-propos.html" class="nav-link" data-i18n="nav.a-propos">À propos</a></li>
+        <li class="nav-item"><a href="mix-playlists.html" class="nav-link" data-i18n="nav.nos-mixs">Nos mixs</a></li>
+        <li class="nav-item"><a href="devis.html" class="btn btn-primary btn-block active" data-i18n="nav.devis">Devis en ligne</a></li>
+      </ul>
+    </nav>
+    <div class="menu-overlay"></div>
+  </header>
+
+  <!-- Animated background -->
+  <div class="dv-bg">
+    <div class="dv-bg__orb dv-bg__orb--1"></div>
+    <div class="dv-bg__orb dv-bg__orb--2"></div>
+    <div class="dv-bg__orb dv-bg__orb--3"></div>
+  </div>
+
+  <main id="main-content">
+
+    <!-- Page Header -->
+    <section class="dv-header">
+      <h1 class="dv-header__title" data-i18n="devis.title">Devis en ligne</h1>
+      <span class="dv-header__sub" data-i18n="devis.subtitle">Gratuit & sans engagement</span>
+      <p class="dv-header__desc" data-i18n="devis.desc">
+        Décrivez votre événement et recevez votre devis personnalisé en moins de 24 heures.
+      </p>
+    </section>
+
+    <!-- 2-Column Layout -->
+    <div class="dv-layout">
+
+      <!-- Sidebar -->
+      <aside class="dv-sidebar">
+        <div class="dv-sidebar__section">
+          <h2 class="dv-sidebar__title" data-i18n="devis.why.title">Pourquoi VIBRA ?</h2>
+          <p class="dv-sidebar__subtitle" data-i18n="devis.why.subtitle">Un accompagnement complet pour faire de votre événement un moment inoubliable.</p>
+
+          <div class="dv-service">
+            <div class="dv-service__icon">
+              <svg viewBox="0 0 24 24"><path d="M12 3v9.28a4.39 4.39 0 0 0-1.5-.28C8.01 12 6 13.79 6 16s2.01 4 4.5 4S15 18.21 15 16V6h3V3h-6z"/></svg>
+            </div>
+            <div class="dv-service__text">
+              <p class="dv-service__name" data-i18n="devis.s1.name">DJs & artistes live</p>
+              <p class="dv-service__desc" data-i18n="devis.s1.desc">Adaptés à votre style et ambiance.</p>
+            </div>
+          </div>
+
+          <div class="dv-service">
+            <div class="dv-service__icon">
+              <svg viewBox="0 0 24 24"><path d="M17 2H7c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-3 2v4l-1.5-1.5L11 8V4h3zm3 16H7V4h2v8l2.5-3 2.5 3V4h3v16z"/><circle cx="12" cy="17" r="2"/></svg>
+            </div>
+            <div class="dv-service__text">
+              <p class="dv-service__name" data-i18n="devis.s2.name">Sonorisation & lumières adaptés</p>
+              <p class="dv-service__desc" data-i18n="devis.s2.desc">Matériel haut de gamme adapté à votre lieu.</p>
+            </div>
+          </div>
+
+          <div class="dv-service">
+            <div class="dv-service__icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            </div>
+            <div class="dv-service__text">
+              <p class="dv-service__name" data-i18n="devis.s4.name">Événements sur mesure</p>
+              <p class="dv-service__desc" data-i18n="devis.s4.desc">Pensé selon vos envies et budget.</p>
+            </div>
+          </div>
+
+          <div class="dv-service">
+            <div class="dv-service__icon">
+              <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+            </div>
+            <div class="dv-service__text">
+              <p class="dv-service__name" data-i18n="devis.s5.name">Réponse sous 24h</p>
+              <p class="dv-service__desc" data-i18n="devis.s5.desc">Devis détaillé sous 24h.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="dv-sidebar__divider"></div>
+
+        <div class="dv-sidebar__section">
+          <h3 class="dv-sidebar__title" style="font-size: 16px;" data-i18n="devis.contact.title">Contactez-nous</h3>
+          <p class="dv-sidebar__subtitle" style="margin-bottom: 16px;" data-i18n="devis.contact.subtitle">Une question avant de remplir le formulaire ?</p>
+
+          <div class="dv-sidebar-contact">
+            <div class="dv-sidebar-contact-item">
+              <div class="dv-sidebar-contact-item__icon">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              </div>
+              <div class="dv-sidebar-contact-item__info">
+                <p class="dv-sidebar-contact-item__label" data-i18n="devis.contact.phone">Téléphone</p>
+                <p class="dv-sidebar-contact-item__value"><a href="tel:+33634035269">06 34 03 52 69</a></p>
+              </div>
+            </div>
+            <div class="dv-sidebar-contact-item">
+              <div class="dv-sidebar-contact-item__icon">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              </div>
+              <div class="dv-sidebar-contact-item__info">
+                <p class="dv-sidebar-contact-item__label" data-i18n="devis.contact.email">Email</p>
+                <p class="dv-sidebar-contact-item__value"><a href="mailto:contact.vibra.event@gmail.com">contact.vibra.event@gmail.com</a></p>
+              </div>
+            </div>
+            <div class="dv-sidebar-contact-item">
+              <div class="dv-sidebar-contact-item__icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </div>
+              <div class="dv-sidebar-contact-item__info">
+                <p class="dv-sidebar-contact-item__label">Instagram</p>
+                <p class="dv-sidebar-contact-item__value"><a href="#">@vibra.events</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Form -->
+      <div class="dv-form-wrapper">
+        <div class="dv-form-card">
+
+        <form id="devisForm">
+          <!-- NOM / Prénom -->
+          <div class="dv-row">
+            <div class="dv-field">
+              <label class="dv-label" for="dv-nom"><span data-i18n="devis.form.nom">NOM</span> <span class="dv-required">*</span></label>
+              <input class="dv-input" type="text" id="dv-nom" name="nom" placeholder="Dupont" data-i18n-ph="devis.ph.nom" required>
+            </div>
+            <div class="dv-field">
+              <label class="dv-label" for="dv-prenom"><span data-i18n="devis.form.prenom">Prénom</span> <span class="dv-required">*</span></label>
+              <input class="dv-input" type="text" id="dv-prenom" name="prenom" placeholder="Jean" data-i18n-ph="devis.ph.prenom" required>
+            </div>
+          </div>
+
+          <!-- Entreprise -->
+          <div class="dv-row dv-row--full">
+            <div class="dv-field">
+              <label class="dv-label" for="dv-entreprise" data-i18n="devis.form.entreprise">Entreprise (facultatif)</label>
+              <input class="dv-input" type="text" id="dv-entreprise" name="entreprise" placeholder="Nom de votre entreprise" data-i18n-ph="devis.ph.entreprise">
+            </div>
+          </div>
+
+          <!-- Téléphone -->
+          <div class="dv-row dv-row--full">
+            <div class="dv-field">
+              <label class="dv-label" for="dv-tel"><span data-i18n="devis.form.tel">Numéro de téléphone</span> <span class="dv-required">*</span></label>
+              <div class="dv-phone-wrapper">
+                <div class="dv-phone-prefix" id="phonePrefixBtn">
+                  <img class="dv-flag" id="phoneFlag" src="https://flagcdn.com/w40/fr.png" alt="FR">
+                  <input class="dv-prefix-input" type="text" id="phonePrefixInput" value="+33" maxlength="5">
+                  <svg class="dv-prefix-arrow" viewBox="0 0 24 24" width="12" height="12"><path d="M7 10l5 5 5-5z" fill="#999"/></svg>
+                </div>
+                <input class="dv-input dv-input--phone" type="tel" id="dv-tel" name="telephone" inputmode="numeric" placeholder="6 12 34 56 78" data-i18n-ph="devis.ph.tel" required>
+              </div>
+              <!-- Dropdown pays -->
+              <div class="dv-country-dropdown" id="countryDropdown">
+                <div class="dv-country-search-wrap">
+                  <input class="dv-country-search" id="countrySearch" type="text" placeholder="Rechercher un pays..." data-i18n-ph="devis.ph.search">
+                </div>
+                <div class="dv-country-list" id="countryList"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="dv-row dv-row--full">
+            <div class="dv-field">
+              <label class="dv-label" for="dv-email"><span data-i18n="devis.form.email">Adresse email</span> <span class="dv-required">*</span></label>
+              <input class="dv-input" type="email" id="dv-email" name="email" placeholder="jean.dupont@email.com" data-i18n-ph="devis.ph.email" required>
+            </div>
+          </div>
+
+          <!-- Type d'événement - radio buttons -->
+          <div class="dv-row dv-row--full" style="margin-top: 8px;">
+            <div class="dv-field">
+              <label class="dv-label"><span data-i18n="devis.form.type">Type d'événement</span> <span class="dv-required">*</span></label>
+              <div class="dv-radios">
+                <label class="dv-radio">
+                  <input type="radio" name="type" value="mariage" required>
+                  <span class="dv-radio__dot"></span>
+                  <span class="dv-radio__label" data-i18n="devis.form.mariage">Mariage</span>
+                </label>
+                <label class="dv-radio">
+                  <input type="radio" name="type" value="evenement-entreprise">
+                  <span class="dv-radio__dot"></span>
+                  <span class="dv-radio__label" data-i18n="devis.form.entreprise-event">Événement d'entreprise</span>
+                </label>
+                <label class="dv-radio">
+                  <input type="radio" name="type" value="evenement-particulier">
+                  <span class="dv-radio__dot"></span>
+                  <span class="dv-radio__label" data-i18n="devis.form.particulier-event">Événement particulier</span>
+                </label>
+                <label class="dv-radio">
+                  <input type="radio" name="type" value="autre">
+                  <span class="dv-radio__dot"></span>
+                  <span class="dv-radio__label" data-i18n="devis.form.autre">Autre</span>
+                </label>
+                <div class="dv-autre-wrap" id="autreWrap">
+                  <input class="dv-autre-input" type="text" id="dv-autre-type" name="autre_type" placeholder="Dites-nous votre type d'événement" data-i18n-ph="devis.ph.autre">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nom de la salle -->
+          <div class="dv-row dv-row--full">
+            <div class="dv-field">
+              <label class="dv-label" for="dv-salle" data-i18n="devis.form.salle">Nom de la salle (facultatif)</label>
+              <input class="dv-input" type="text" id="dv-salle" name="salle" placeholder="Ex : Château de Fontainebleau" data-i18n-ph="devis.ph.salle">
+            </div>
+          </div>
+
+          <!-- Adresse de l'événement -->
+          <div class="dv-row dv-row--full">
+            <div class="dv-field">
+              <label class="dv-label" for="dv-adresse"><span data-i18n="devis.form.adresse">Adresse de l'événement</span> <span class="dv-required">*</span></label>
+              <input class="dv-input" type="text" id="dv-adresse" name="adresse" placeholder="12 rue de la Paix, 75002 Paris" data-i18n-ph="devis.ph.adresse" required>
+            </div>
+          </div>
+
+          <!-- Date -->
+          <div class="dv-row dv-row--full">
+            <div class="dv-field">
+              <label class="dv-label"><span data-i18n="devis.form.date">Date de l'événement</span> <span class="dv-required">*</span></label>
+              <input type="hidden" id="dv-date-hidden" name="date" required>
+              <div class="dv-date-trigger" id="dateTrigger">
+                <svg class="dv-date-icon" viewBox="0 0 24 24" width="18" height="18"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z" fill="#999"/></svg>
+                <span class="dv-date-text" id="dateText" data-i18n="devis.ph.date">jj / mm / aaaa</span>
+              </div>
+              <!-- Custom calendar -->
+              <div class="dv-calendar" id="calendarPopup">
+                <div class="dv-cal-header">
+                  <button type="button" class="dv-cal-arrow" id="calPrev"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg></button>
+                  <span class="dv-cal-title" id="calTitle"></span>
+                  <button type="button" class="dv-cal-arrow" id="calNext"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"/></svg></button>
+                </div>
+                <div class="dv-cal-weekdays">
+                  <span data-i18n="devis.cal.lu">Lu</span><span data-i18n="devis.cal.ma">Ma</span><span data-i18n="devis.cal.me">Me</span><span data-i18n="devis.cal.je">Je</span><span data-i18n="devis.cal.ve">Ve</span><span data-i18n="devis.cal.sa">Sa</span><span data-i18n="devis.cal.di">Di</span>
+                </div>
+                <div class="dv-cal-days" id="calDays"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Titre de l'événement -->
+          <div class="dv-row dv-row--full">
+            <div class="dv-field">
+              <label class="dv-label" for="dv-titre">Titre de l'événement (facultatif)</label>
+              <input class="dv-input" type="text" id="dv-titre" name="titre" placeholder="Ex : Gala annuel 2026">
+            </div>
+          </div>
+
+          <!-- Nombre de personnes -->
+          <div class="dv-row dv-row--full">
+            <div class="dv-field">
+              <label class="dv-label" for="dv-personnes">Nombre de personnes (facultatif)</label>
+              <input class="dv-input" type="number" id="dv-personnes" name="personnes" placeholder="Ex : 150" min="1">
+            </div>
+          </div>
+
+          <!-- Heures -->
+          <div class="dv-row">
+            <div class="dv-field">
+              <label class="dv-label" for="dv-heure-debut">Heure de début (facultatif)</label>
+              <input class="dv-input" type="time" id="dv-heure-debut" name="heure_debut">
+            </div>
+            <div class="dv-field">
+              <label class="dv-label" for="dv-heure-fin">Heure de fin (facultatif)</label>
+              <input class="dv-input" type="time" id="dv-heure-fin" name="heure_fin">
+            </div>
+          </div>
+
+          <!-- Style de musique demandé -->
+          <div class="dv-row dv-row--full" style="margin-top: 8px;">
+            <div class="dv-field">
+              <label class="dv-label" for="dv-style" data-i18n="devis.form.style">Style de musique demandé</label>
+              <textarea class="dv-textarea" id="dv-style" name="style_musique" placeholder="Ex : latino, généraliste, fin de soirée, reggaeton, house, années 80..." data-i18n-ph="devis.ph.style"></textarea>
+            </div>
+          </div>
+
+          <!-- Décrivez votre demande -->
+          <div class="dv-row dv-row--full" style="margin-top: 8px;">
+            <div class="dv-field">
+              <label class="dv-label" for="dv-message" data-i18n="devis.form.message">Décrivez votre demande</label>
+              <textarea class="dv-textarea" id="dv-message" name="message" placeholder="Dites nous en plus" data-i18n-ph="devis.ph.message"></textarea>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <div class="dv-submit-row">
+            <button type="submit" class="dv-submit">
+              <span data-i18n="devis.form.submit">Envoyer ma demande</span>
+              <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+          </div>
+        </form>
+
+        <!-- Success message (hidden by default) -->
+        <div class="dv-success" id="devisSuccess">
+          <div class="dv-success__icon">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          </div>
+          <h3 class="dv-success__title" data-i18n="devis.success.title">Demande envoyée !</h3>
+          <p class="dv-success__text" data-i18n-html="devis.success.text">
+            Merci pour votre confiance. Notre équipe vous recontactera<br>
+            sous 48h pour discuter de votre projet.
+          </p>
+          <a href="/" class="dv-success__btn" data-i18n="devis.success.btn">Retour à l'accueil</a>
+        </div>
+
+      </div>
+    </div>
+
+    </div><!-- /.dv-layout -->
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo" aria-label="VIBRA - Retour à l'accueil">
+            <img src="assets/images/logo/logo_porge.png" alt="VIBRA" class="footer-logo-image">
+          </a>
+          <p class="footer-description" data-i18n="footer.description">
+            Votre agence événementielle premium spécialisée dans la sonorisation, l'éclairage et l'animation musicale pour tous vos événements.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="footer-social-link" aria-label="Instagram">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-section-title" data-i18n="footer.prestations">Prestations</h3>
+          <ul class="footer-links">
+            <li><a href="evenements-professionnels.html" class="footer-link" data-i18n="footer.events-pro">Événements Professionnels</a></li>
+            <li><a href="evenements-particuliers.html" class="footer-link" data-i18n="footer.events-part">Événements Particuliers</a></li>
+            <li><a href="prestations-techniques.html" class="footer-link" data-i18n="footer.services-tech">Services Techniques</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-section-title" data-i18n="footer.artistes">Artistes</h3>
+          <ul class="footer-links">
+            <li><a href="equipe-djs.html" class="footer-link" data-i18n="footer.nos-djs">Nos DJs</a></li>
+            <li><a href="equipe-solo-groupes.html" class="footer-link" data-i18n="footer.solo-groupes">Solo & Groupes</a></li>
+            <li><a href="mix-playlists.html" class="footer-link" data-i18n="footer.mixs-playlists">Mixs & Playlists</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-section-title" data-i18n="footer.a-propos">À propos</h3>
+          <ul class="footer-links">
+            <li><a href="portfolio.html" class="footer-link" data-i18n="footer.realisations">Nos Réalisations</a></li>
+            <li><a href="#contact" class="footer-link" data-i18n="footer.contact">Contact</a></li>
+            <li><a href="devis.html" class="footer-link" data-i18n="footer.devis">Devis en ligne</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p class="copyright" data-i18n="footer.copyright">&copy; 2026 VIBRA Event Agency. Tous droits réservés.</p>
+          <ul class="footer-legal-links">
+            <li><a href="#mentions" class="footer-legal-link" data-i18n="footer.mentions">Mentions légales</a></li>
+            <li><a href="#privacy" class="footer-legal-link" data-i18n="footer.privacy">Politique de confidentialité</a></li>
+            <li><a href="#cgv" class="footer-legal-link" data-i18n="footer.cgv">CGV</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="assets/js/i18n/translations.js"></script>
+  <script src="assets/js/i18n/lang-switcher.js"></script>
+  <script src="assets/js/main.js?v=2" type="module"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // ========== COUNTRIES DATA ==========
+      // France en premier, puis tous les pays par ordre alphabétique
+      var countries = [
+        { name: 'France', code: '+33', iso: 'fr', fmt: '2' },
+        { name: 'Afghanistan', code: '+93', iso: 'af', fmt: '3' },
+        { name: 'Afrique du Sud', code: '+27', iso: 'za', fmt: '3' },
+        { name: 'Albanie', code: '+355', iso: 'al', fmt: '3' },
+        { name: 'Algérie', code: '+213', iso: 'dz', fmt: '2' },
+        { name: 'Allemagne', code: '+49', iso: 'de', fmt: '3' },
+        { name: 'Andorre', code: '+376', iso: 'ad', fmt: '3' },
+        { name: 'Angola', code: '+244', iso: 'ao', fmt: '3' },
+        { name: 'Arabie saoudite', code: '+966', iso: 'sa', fmt: '3' },
+        { name: 'Argentine', code: '+54', iso: 'ar', fmt: '3' },
+        { name: 'Arménie', code: '+374', iso: 'am', fmt: '3' },
+        { name: 'Australie', code: '+61', iso: 'au', fmt: '3' },
+        { name: 'Autriche', code: '+43', iso: 'at', fmt: '3' },
+        { name: 'Azerbaïdjan', code: '+994', iso: 'az', fmt: '3' },
+        { name: 'Bahreïn', code: '+973', iso: 'bh', fmt: '3' },
+        { name: 'Bangladesh', code: '+880', iso: 'bd', fmt: '3' },
+        { name: 'Belgique', code: '+32', iso: 'be', fmt: '2' },
+        { name: 'Bénin', code: '+229', iso: 'bj', fmt: '2' },
+        { name: 'Biélorussie', code: '+375', iso: 'by', fmt: '3' },
+        { name: 'Bolivie', code: '+591', iso: 'bo', fmt: '3' },
+        { name: 'Bosnie-Herzégovine', code: '+387', iso: 'ba', fmt: '3' },
+        { name: 'Botswana', code: '+267', iso: 'bw', fmt: '3' },
+        { name: 'Brésil', code: '+55', iso: 'br', fmt: '3' },
+        { name: 'Brunei', code: '+673', iso: 'bn', fmt: '3' },
+        { name: 'Bulgarie', code: '+359', iso: 'bg', fmt: '3' },
+        { name: 'Burkina Faso', code: '+226', iso: 'bf', fmt: '2' },
+        { name: 'Burundi', code: '+257', iso: 'bi', fmt: '2' },
+        { name: 'Cambodge', code: '+855', iso: 'kh', fmt: '3' },
+        { name: 'Cameroun', code: '+237', iso: 'cm', fmt: '2' },
+        { name: 'Canada', code: '+1', iso: 'ca', fmt: 'us' },
+        { name: 'Cap-Vert', code: '+238', iso: 'cv', fmt: '3' },
+        { name: 'Centrafrique', code: '+236', iso: 'cf', fmt: '2' },
+        { name: 'Chili', code: '+56', iso: 'cl', fmt: '3' },
+        { name: 'Chine', code: '+86', iso: 'cn', fmt: '3' },
+        { name: 'Chypre', code: '+357', iso: 'cy', fmt: '3' },
+        { name: 'Colombie', code: '+57', iso: 'co', fmt: '3' },
+        { name: 'Comores', code: '+269', iso: 'km', fmt: '2' },
+        { name: 'Congo (Brazzaville)', code: '+242', iso: 'cg', fmt: '2' },
+        { name: 'Congo (RDC)', code: '+243', iso: 'cd', fmt: '2' },
+        { name: 'Corée du Sud', code: '+82', iso: 'kr', fmt: '3' },
+        { name: 'Costa Rica', code: '+506', iso: 'cr', fmt: '3' },
+        { name: 'Côte d\'Ivoire', code: '+225', iso: 'ci', fmt: '2' },
+        { name: 'Croatie', code: '+385', iso: 'hr', fmt: '3' },
+        { name: 'Cuba', code: '+53', iso: 'cu', fmt: '3' },
+        { name: 'Danemark', code: '+45', iso: 'dk', fmt: '2' },
+        { name: 'Djibouti', code: '+253', iso: 'dj', fmt: '2' },
+        { name: 'Égypte', code: '+20', iso: 'eg', fmt: '3' },
+        { name: 'Émirats arabes unis', code: '+971', iso: 'ae', fmt: '3' },
+        { name: 'Équateur', code: '+593', iso: 'ec', fmt: '3' },
+        { name: 'Érythrée', code: '+291', iso: 'er', fmt: '3' },
+        { name: 'Espagne', code: '+34', iso: 'es', fmt: '3' },
+        { name: 'Estonie', code: '+372', iso: 'ee', fmt: '3' },
+        { name: 'États-Unis', code: '+1', iso: 'us', fmt: 'us' },
+        { name: 'Éthiopie', code: '+251', iso: 'et', fmt: '3' },
+        { name: 'Fidji', code: '+679', iso: 'fj', fmt: '3' },
+        { name: 'Finlande', code: '+358', iso: 'fi', fmt: '3' },
+        { name: 'Gabon', code: '+241', iso: 'ga', fmt: '2' },
+        { name: 'Gambie', code: '+220', iso: 'gm', fmt: '3' },
+        { name: 'Géorgie', code: '+995', iso: 'ge', fmt: '3' },
+        { name: 'Ghana', code: '+233', iso: 'gh', fmt: '3' },
+        { name: 'Grèce', code: '+30', iso: 'gr', fmt: '3' },
+        { name: 'Guatemala', code: '+502', iso: 'gt', fmt: '3' },
+        { name: 'Guinée', code: '+224', iso: 'gn', fmt: '2' },
+        { name: 'Guinée équatoriale', code: '+240', iso: 'gq', fmt: '3' },
+        { name: 'Guinée-Bissau', code: '+245', iso: 'gw', fmt: '3' },
+        { name: 'Guadeloupe', code: '+590', iso: 'gp', fmt: '2' },
+        { name: 'Guyane française', code: '+594', iso: 'gf', fmt: '2' },
+        { name: 'Haïti', code: '+509', iso: 'ht', fmt: '2' },
+        { name: 'Honduras', code: '+504', iso: 'hn', fmt: '3' },
+        { name: 'Hongrie', code: '+36', iso: 'hu', fmt: '3' },
+        { name: 'Inde', code: '+91', iso: 'in', fmt: '3' },
+        { name: 'Indonésie', code: '+62', iso: 'id', fmt: '3' },
+        { name: 'Irak', code: '+964', iso: 'iq', fmt: '3' },
+        { name: 'Iran', code: '+98', iso: 'ir', fmt: '3' },
+        { name: 'Irlande', code: '+353', iso: 'ie', fmt: '3' },
+        { name: 'Islande', code: '+354', iso: 'is', fmt: '3' },
+        { name: 'Israël', code: '+972', iso: 'il', fmt: '3' },
+        { name: 'Italie', code: '+39', iso: 'it', fmt: '3' },
+        { name: 'Jamaïque', code: '+1', iso: 'jm', fmt: 'us' },
+        { name: 'Japon', code: '+81', iso: 'jp', fmt: '3' },
+        { name: 'Jordanie', code: '+962', iso: 'jo', fmt: '3' },
+        { name: 'Kazakhstan', code: '+7', iso: 'kz', fmt: '3' },
+        { name: 'Kenya', code: '+254', iso: 'ke', fmt: '3' },
+        { name: 'Kirghizistan', code: '+996', iso: 'kg', fmt: '3' },
+        { name: 'Koweït', code: '+965', iso: 'kw', fmt: '3' },
+        { name: 'Laos', code: '+856', iso: 'la', fmt: '3' },
+        { name: 'Lesotho', code: '+266', iso: 'ls', fmt: '3' },
+        { name: 'Lettonie', code: '+371', iso: 'lv', fmt: '3' },
+        { name: 'Liban', code: '+961', iso: 'lb', fmt: '3' },
+        { name: 'Liberia', code: '+231', iso: 'lr', fmt: '3' },
+        { name: 'Libye', code: '+218', iso: 'ly', fmt: '3' },
+        { name: 'Liechtenstein', code: '+423', iso: 'li', fmt: '3' },
+        { name: 'Lituanie', code: '+370', iso: 'lt', fmt: '3' },
+        { name: 'Luxembourg', code: '+352', iso: 'lu', fmt: '3' },
+        { name: 'Macédoine du Nord', code: '+389', iso: 'mk', fmt: '3' },
+        { name: 'Madagascar', code: '+261', iso: 'mg', fmt: '2' },
+        { name: 'Malaisie', code: '+60', iso: 'my', fmt: '3' },
+        { name: 'Malawi', code: '+265', iso: 'mw', fmt: '3' },
+        { name: 'Maldives', code: '+960', iso: 'mv', fmt: '3' },
+        { name: 'Mali', code: '+223', iso: 'ml', fmt: '2' },
+        { name: 'Malte', code: '+356', iso: 'mt', fmt: '3' },
+        { name: 'Maroc', code: '+212', iso: 'ma', fmt: '2' },
+        { name: 'Martinique', code: '+596', iso: 'mq', fmt: '2' },
+        { name: 'Maurice', code: '+230', iso: 'mu', fmt: '3' },
+        { name: 'Mauritanie', code: '+222', iso: 'mr', fmt: '2' },
+        { name: 'Mayotte', code: '+262', iso: 'yt', fmt: '2' },
+        { name: 'Mexique', code: '+52', iso: 'mx', fmt: '3' },
+        { name: 'Moldavie', code: '+373', iso: 'md', fmt: '3' },
+        { name: 'Monaco', code: '+377', iso: 'mc', fmt: '2' },
+        { name: 'Mongolie', code: '+976', iso: 'mn', fmt: '3' },
+        { name: 'Monténégro', code: '+382', iso: 'me', fmt: '3' },
+        { name: 'Mozambique', code: '+258', iso: 'mz', fmt: '3' },
+        { name: 'Myanmar', code: '+95', iso: 'mm', fmt: '3' },
+        { name: 'Namibie', code: '+264', iso: 'na', fmt: '3' },
+        { name: 'Népal', code: '+977', iso: 'np', fmt: '3' },
+        { name: 'Nicaragua', code: '+505', iso: 'ni', fmt: '3' },
+        { name: 'Niger', code: '+227', iso: 'ne', fmt: '2' },
+        { name: 'Nigeria', code: '+234', iso: 'ng', fmt: '3' },
+        { name: 'Norvège', code: '+47', iso: 'no', fmt: '2' },
+        { name: 'Nouvelle-Calédonie', code: '+687', iso: 'nc', fmt: '2' },
+        { name: 'Nouvelle-Zélande', code: '+64', iso: 'nz', fmt: '3' },
+        { name: 'Oman', code: '+968', iso: 'om', fmt: '3' },
+        { name: 'Ouganda', code: '+256', iso: 'ug', fmt: '3' },
+        { name: 'Ouzbékistan', code: '+998', iso: 'uz', fmt: '3' },
+        { name: 'Pakistan', code: '+92', iso: 'pk', fmt: '3' },
+        { name: 'Palestine', code: '+970', iso: 'ps', fmt: '3' },
+        { name: 'Panama', code: '+507', iso: 'pa', fmt: '3' },
+        { name: 'Papouasie-Nouvelle-Guinée', code: '+675', iso: 'pg', fmt: '3' },
+        { name: 'Paraguay', code: '+595', iso: 'py', fmt: '3' },
+        { name: 'Pays-Bas', code: '+31', iso: 'nl', fmt: '2' },
+        { name: 'Pérou', code: '+51', iso: 'pe', fmt: '3' },
+        { name: 'Philippines', code: '+63', iso: 'ph', fmt: '3' },
+        { name: 'Pologne', code: '+48', iso: 'pl', fmt: '3' },
+        { name: 'Polynésie française', code: '+689', iso: 'pf', fmt: '2' },
+        { name: 'Portugal', code: '+351', iso: 'pt', fmt: '3' },
+        { name: 'Qatar', code: '+974', iso: 'qa', fmt: '3' },
+        { name: 'République dominicaine', code: '+1', iso: 'do', fmt: 'us' },
+        { name: 'République tchèque', code: '+420', iso: 'cz', fmt: '3' },
+        { name: 'Réunion', code: '+262', iso: 're', fmt: '2' },
+        { name: 'Roumanie', code: '+40', iso: 'ro', fmt: '3' },
+        { name: 'Royaume-Uni', code: '+44', iso: 'gb', fmt: 'uk' },
+        { name: 'Russie', code: '+7', iso: 'ru', fmt: '3' },
+        { name: 'Rwanda', code: '+250', iso: 'rw', fmt: '3' },
+        { name: 'Salvador', code: '+503', iso: 'sv', fmt: '3' },
+        { name: 'Sénégal', code: '+221', iso: 'sn', fmt: '2' },
+        { name: 'Serbie', code: '+381', iso: 'rs', fmt: '3' },
+        { name: 'Sierra Leone', code: '+232', iso: 'sl', fmt: '3' },
+        { name: 'Singapour', code: '+65', iso: 'sg', fmt: '3' },
+        { name: 'Slovaquie', code: '+421', iso: 'sk', fmt: '3' },
+        { name: 'Slovénie', code: '+386', iso: 'si', fmt: '3' },
+        { name: 'Somalie', code: '+252', iso: 'so', fmt: '3' },
+        { name: 'Soudan', code: '+249', iso: 'sd', fmt: '3' },
+        { name: 'Sri Lanka', code: '+94', iso: 'lk', fmt: '3' },
+        { name: 'Suède', code: '+46', iso: 'se', fmt: '3' },
+        { name: 'Suisse', code: '+41', iso: 'ch', fmt: '2' },
+        { name: 'Suriname', code: '+597', iso: 'sr', fmt: '3' },
+        { name: 'Syrie', code: '+963', iso: 'sy', fmt: '3' },
+        { name: 'Tadjikistan', code: '+992', iso: 'tj', fmt: '3' },
+        { name: 'Taïwan', code: '+886', iso: 'tw', fmt: '3' },
+        { name: 'Tanzanie', code: '+255', iso: 'tz', fmt: '3' },
+        { name: 'Tchad', code: '+235', iso: 'td', fmt: '2' },
+        { name: 'Thaïlande', code: '+66', iso: 'th', fmt: '3' },
+        { name: 'Togo', code: '+228', iso: 'tg', fmt: '2' },
+        { name: 'Trinité-et-Tobago', code: '+1', iso: 'tt', fmt: 'us' },
+        { name: 'Tunisie', code: '+216', iso: 'tn', fmt: '2' },
+        { name: 'Turkménistan', code: '+993', iso: 'tm', fmt: '3' },
+        { name: 'Turquie', code: '+90', iso: 'tr', fmt: '3' },
+        { name: 'Ukraine', code: '+380', iso: 'ua', fmt: '3' },
+        { name: 'Uruguay', code: '+598', iso: 'uy', fmt: '3' },
+        { name: 'Venezuela', code: '+58', iso: 've', fmt: '3' },
+        { name: 'Viêt Nam', code: '+84', iso: 'vn', fmt: '3' },
+        { name: 'Yémen', code: '+967', iso: 'ye', fmt: '3' },
+        { name: 'Zambie', code: '+260', iso: 'zm', fmt: '3' },
+        { name: 'Zimbabwe', code: '+263', iso: 'zw', fmt: '3' },
+      ];
+
+      var currentCountry = countries[0]; // France par défaut
+
+      // ========== PHONE FORMATTING ==========
+      // Détecte le 0 initial (format local) et adapte le regroupement
+      function formatPhone(value, fmt) {
+        var digits = value.replace(/[^0-9]/g, '');
+        var result = '';
+        var startsWithZero = digits.charAt(0) === '0';
+
+        if (fmt === 'us') {
+          // USA/Canada : XXX XXX XXXX
+          for (var i = 0; i < digits.length; i++) {
+            if (i === 3 || i === 6) result += ' ';
+            result += digits[i];
+          }
+        } else if (fmt === 'uk') {
+          if (startsWithZero) {
+            // Format local UK : 07XXX XXX XXX (5+3+3)
+            for (var i = 0; i < digits.length; i++) {
+              if (i === 5 || i === 8) result += ' ';
+              result += digits[i];
+            }
+          } else {
+            // Format international : XXXX XXX XXX
+            for (var i = 0; i < digits.length; i++) {
+              if (i === 4 || i === 7) result += ' ';
+              result += digits[i];
+            }
+          }
+        } else if (fmt === '2') {
+          if (startsWithZero) {
+            // Format local (ex: 06 12 34 56 78) : XX XX XX XX XX
+            for (var i = 0; i < digits.length; i++) {
+              if (i > 0 && i % 2 === 0) result += ' ';
+              result += digits[i];
+            }
+          } else {
+            // Format international (ex: 6 12 34 56 78) : X XX XX XX XX
+            for (var i = 0; i < digits.length; i++) {
+              if (i === 1 || (i > 1 && i % 2 === 1)) result += ' ';
+              result += digits[i];
+            }
+          }
+        } else {
+          // Défaut : XXX XXX XXX (groupes de 3)
+          for (var i = 0; i < digits.length; i++) {
+            if (i > 0 && i % 3 === 0) result += ' ';
+            result += digits[i];
+          }
+        }
+        return result;
+      }
+
+      function getPlaceholder(fmt) {
+        switch(fmt) {
+          case '2': return '6 12 34 56 78';
+          case 'us': return '234 567 8901';
+          case 'uk': return '7911 123 456';
+          default: return '123 456 789';
+        }
+      }
+
+      function flagUrl(iso) {
+        return 'https://flagcdn.com/w40/' + iso + '.png';
+      }
+
+      // ========== PHONE PREFIX ==========
+      var phoneFlag = document.getElementById('phoneFlag');
+      var prefixInput = document.getElementById('phonePrefixInput');
+      var phonePrefixBtn = document.getElementById('phonePrefixBtn');
+      var countryDropdown = document.getElementById('countryDropdown');
+      var countryList = document.getElementById('countryList');
+      var countrySearch = document.getElementById('countrySearch');
+      var phoneInput = document.getElementById('dv-tel');
+
+      function selectCountry(c) {
+        currentCountry = c;
+        prefixInput.value = c.code;
+        phoneFlag.src = flagUrl(c.iso);
+        phoneFlag.alt = c.iso.toUpperCase();
+        phoneInput.placeholder = getPlaceholder(c.fmt);
+        // Reformat existing phone value
+        if (phoneInput.value) {
+          phoneInput.value = formatPhone(phoneInput.value, c.fmt);
+        }
+        countryDropdown.classList.remove('open');
+      }
+
+      // Phone: numbers only + auto-format
+      phoneInput.addEventListener('input', function() {
+        var cursorPos = this.selectionStart;
+        var oldLen = this.value.length;
+        var digits = this.value.replace(/[^0-9]/g, '');
+        this.value = formatPhone(digits, currentCountry.fmt);
+        // Adjust cursor position
+        var newLen = this.value.length;
+        var diff = newLen - oldLen;
+        this.setSelectionRange(cursorPos + diff, cursorPos + diff);
+      });
+
+      // Prefix input: allow typing +digits
+      prefixInput.addEventListener('input', function() {
+        var val = this.value;
+        if (val.charAt(0) !== '+') val = '+' + val;
+        this.value = val.replace(/[^+0-9]/g, '');
+        // Find matching country
+        var match = countries.find(function(c) { return c.code === val; });
+        if (match) {
+          phoneFlag.src = flagUrl(match.iso);
+          phoneFlag.alt = match.iso.toUpperCase();
+          currentCountry = match;
+          phoneInput.placeholder = getPlaceholder(match.fmt);
+        } else {
+          phoneFlag.src = '';
+          phoneFlag.alt = '';
+        }
+      });
+
+      // Build country list
+      function renderCountries(filter) {
+        countryList.innerHTML = '';
+        var q = (filter || '').toLowerCase();
+        countries.forEach(function(c) {
+          if (q && c.name.toLowerCase().indexOf(q) === -1 && c.code.indexOf(q) === -1) return;
+          var div = document.createElement('div');
+          div.className = 'dv-country-opt';
+          div.innerHTML = '<img class="dv-country-opt__flag" src="' + flagUrl(c.iso) + '" alt="' + c.iso.toUpperCase() + '">' +
+            '<span>' + c.name + '</span>' +
+            '<span class="dv-country-opt__code">' + c.code + '</span>';
+          div.addEventListener('click', function() {
+            selectCountry(c);
+          });
+          countryList.appendChild(div);
+        });
+      }
+      renderCountries('');
+
+      phonePrefixBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        countryDropdown.classList.toggle('open');
+        if (countryDropdown.classList.contains('open')) {
+          countrySearch.value = '';
+          renderCountries('');
+          setTimeout(function() { countrySearch.focus(); }, 50);
+        }
+      });
+
+      countrySearch.addEventListener('input', function() {
+        renderCountries(this.value);
+      });
+
+      // Close dropdown on outside click
+      document.addEventListener('click', function(e) {
+        if (!countryDropdown.contains(e.target) && !phonePrefixBtn.contains(e.target)) {
+          countryDropdown.classList.remove('open');
+        }
+      });
+
+      // ========== "AUTRE" RADIO TOGGLE ==========
+      var radios = document.querySelectorAll('input[name="type"]');
+      var autreWrap = document.getElementById('autreWrap');
+      var autreInput = document.getElementById('dv-autre-type');
+
+      radios.forEach(function(radio) {
+        radio.addEventListener('change', function() {
+          if (this.value === 'autre') {
+            autreWrap.classList.add('visible');
+            setTimeout(function() { autreInput.focus(); }, 300);
+          } else {
+            autreWrap.classList.remove('visible');
+            autreInput.value = '';
+          }
+        });
+      });
+
+      // ========== CUSTOM CALENDAR ==========
+      var dateTrigger = document.getElementById('dateTrigger');
+      var dateText = document.getElementById('dateText');
+      var calendarPopup = document.getElementById('calendarPopup');
+      var calTitle = document.getElementById('calTitle');
+      var calDays = document.getElementById('calDays');
+      var calPrev = document.getElementById('calPrev');
+      var calNext = document.getElementById('calNext');
+      var dateHidden = document.getElementById('dv-date-hidden');
+
+      var calMonth = new Date().getMonth();
+      var calYear = new Date().getFullYear();
+      var selectedDate = null;
+      var todayStr = new Date().toISOString().split('T')[0];
+      var monthNames = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+
+      function renderCalendar() {
+        calTitle.textContent = monthNames[calMonth] + ' ' + calYear;
+        calDays.innerHTML = '';
+        var first = new Date(calYear, calMonth, 1);
+        var lastDay = new Date(calYear, calMonth + 1, 0).getDate();
+        var startDay = (first.getDay() + 6) % 7; // Monday=0
+        var today = new Date(); today.setHours(0,0,0,0);
+
+        for (var i = 0; i < startDay; i++) {
+          var empty = document.createElement('div');
+          empty.className = 'dv-cal-day empty';
+          calDays.appendChild(empty);
+        }
+        for (var d = 1; d <= lastDay; d++) {
+          var cell = document.createElement('div');
+          cell.className = 'dv-cal-day';
+          cell.textContent = d;
+          var cellDate = new Date(calYear, calMonth, d);
+          var cellStr = calYear + '-' + String(calMonth+1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+
+          if (cellDate < today) cell.classList.add('past');
+          if (cellStr === todayStr) cell.classList.add('today');
+          if (selectedDate === cellStr) cell.classList.add('selected');
+
+          (function(ds, dayNum) {
+            cell.addEventListener('click', function() {
+              selectedDate = ds;
+              dateHidden.value = ds;
+              dateText.textContent = String(dayNum).padStart(2,'0') + ' / ' + String(calMonth+1).padStart(2,'0') + ' / ' + calYear;
+              dateText.classList.add('filled');
+              calendarPopup.classList.remove('open');
+              dateTrigger.classList.remove('active');
+              renderCalendar();
+            });
+          })(cellStr, d);
+
+          calDays.appendChild(cell);
+        }
+      }
+
+      dateTrigger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        calendarPopup.classList.toggle('open');
+        dateTrigger.classList.toggle('active', calendarPopup.classList.contains('open'));
+        // Close country dropdown
+        countryDropdown.classList.remove('open');
+        renderCalendar();
+      });
+
+      calPrev.addEventListener('click', function(e) {
+        e.stopPropagation();
+        calMonth--;
+        if (calMonth < 0) { calMonth = 11; calYear--; }
+        renderCalendar();
+      });
+
+      calNext.addEventListener('click', function(e) {
+        e.stopPropagation();
+        calMonth++;
+        if (calMonth > 11) { calMonth = 0; calYear++; }
+        renderCalendar();
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!calendarPopup.contains(e.target) && !dateTrigger.contains(e.target)) {
+          calendarPopup.classList.remove('open');
+          dateTrigger.classList.remove('active');
+        }
+      });
+
+      // ========== FORM SUBMIT ==========
+      var form = document.getElementById('devisForm');
+      var success = document.getElementById('devisSuccess');
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Validate date
+        if (!dateHidden.value) {
+          dateTrigger.classList.add('active');
+          calendarPopup.classList.add('open');
+          renderCalendar();
+          return;
+        }
+
+        var formData = new FormData(form);
+        // Add full phone number
+        formData.set('telephone', prefixInput.value + ' ' + phoneInput.value);
+
+        // Remove raw phone field (we use the combined one)
+        formData.delete('phone');
+
+        // Also send to Google Sheets (fire and forget)
+        var sheetData = {
+          nom: formData.get('nom'),
+          prenom: formData.get('prenom'),
+          entreprise: formData.get('entreprise') || '',
+          telephone: formData.get('telephone'),
+          email: formData.get('email'),
+          type: formData.get('type') === 'autre' ? 'Autre : ' + (formData.get('autre_type') || '') : formData.get('type'),
+          salle: formData.get('salle') || '',
+          adresse: formData.get('adresse'),
+          date: formData.get('date'),
+          titre: formData.get('titre') || '',
+          personnes: formData.get('personnes') || '',
+          heure_debut: formData.get('heure_debut') || '',
+          heure_fin: formData.get('heure_fin') || '',
+          style_musique: formData.get('style_musique') || '',
+          message: formData.get('message') || ''
+        };
+        // Google Sheets integration (URL-encoded pour compatibilité Apps Script)
+        fetch('https://script.google.com/macros/s/AKfycbzZZqsqkxF_Pv_SxCwi6z621fjti0w9Tlx0vv2CCNb7G9HDiryYwSP6rcuxV7LYZs_vAg/exec', {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(sheetData).toString()
+        }).catch(function() {});
+
+        // Disable submit button during sending
+        var submitBtn = form.querySelector('.dv-submit');
+        var originalText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Envoi en cours...</span>';
+
+        // Send via FormSubmit.co (gratuit, pas d'inscription)
+        // Premier envoi : un email d'activation sera envoyé à contact@prodramel.com
+        // Il suffit de cliquer sur le lien dans cet email une seule fois pour activer
+        fetch('https://formsubmit.co/ajax/contact@prodramel.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            _subject: 'Nouvelle demande de devis VIBRA',
+            Nom: formData.get('nom'),
+            'Prénom': formData.get('prenom'),
+            Entreprise: formData.get('entreprise') || '(non renseigné)',
+            'Téléphone': formData.get('telephone'),
+            Email: formData.get('email'),
+            "Type d'événement": formData.get('type') === 'autre'
+              ? 'Autre : ' + (formData.get('autre_type') || '')
+              : formData.get('type'),
+            'Nom de la salle': formData.get('salle') || '(non renseigné)',
+            Adresse: formData.get('adresse'),
+            Date: formData.get('date'),
+            'Titre': formData.get('titre') || '(non renseigné)',
+            'Nombre de personnes': formData.get('personnes') || '(non renseigné)',
+            'Heure de début': formData.get('heure_debut') || '(non renseigné)',
+            'Heure de fin': formData.get('heure_fin') || '(non renseigné)',
+            'Style de musique': formData.get('style_musique') || '(non renseigné)',
+            Message: formData.get('message') || '(aucun message)'
+          })
+        })
+        .then(function(response) { return response.json(); })
+        .then(function(data) {
+          form.style.display = 'none';
+          success.classList.add('visible');
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        })
+        .catch(function(error) {
+          console.error('Erreur envoi:', error);
+          // Fallback: ouvrir le client mail avec les données
+          var body = 'Nom: ' + formData.get('nom')
+            + '%0APrénom: ' + formData.get('prenom')
+            + '%0AEntreprise: ' + (formData.get('entreprise') || 'N/A')
+            + '%0ATéléphone: ' + formData.get('telephone')
+            + '%0AEmail: ' + formData.get('email')
+            + '%0AType: ' + formData.get('type')
+            + '%0ASalle: ' + (formData.get('salle') || 'N/A')
+            + '%0AAdresse: ' + formData.get('adresse')
+            + '%0ADate: ' + formData.get('date')
+            + '%0ATitre: ' + (formData.get('titre') || 'N/A')
+            + '%0ANombre de personnes: ' + (formData.get('personnes') || 'N/A')
+            + '%0AHeure début: ' + (formData.get('heure_debut') || 'N/A')
+            + '%0AHeure fin: ' + (formData.get('heure_fin') || 'N/A')
+            + '%0AStyle de musique: ' + (formData.get('style_musique') || 'N/A')
+            + '%0AMessage: ' + (formData.get('message') || 'Aucun');
+          window.location.href = 'mailto:contact@prodramel.com?subject=Demande de devis VIBRA&body=' + body;
+          // Show success anyway
+          form.style.display = 'none';
+          success.classList.add('visible');
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        })
+        .finally(function() {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VIBRA - Agence événementielle premium basée à Bordeaux, présente à Paris et sur la Côte d'Azur. Découvrez notre équipe de DJs et musiciens professionnels.">
+  <meta name="keywords" content="VIBRA, agence événementielle Bordeaux, équipe DJ, musiciens professionnels, événementiel premium">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://vibra-events.com/a-propos.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="VIBRA - À propos | Agence Événementielle Bordeaux">
+  <meta property="og:description" content="Découvrez VIBRA, votre agence événementielle premium basée à Bordeaux, présente à Paris et sur la Côte d'Azur.">
+  <meta property="og:image" content="https://vibra-events.com/assets/images/logo/logo_porge.png">
+  <meta property="og:url" content="https://vibra-events.com/a-propos.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+
+  <title>VIBRA - À propos | Agence Événementielle Bordeaux</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo/vibra-icon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/logo/logo_porge.png">
+  <link rel="apple-touch-icon" href="assets/images/logo/logo_porge.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <!-- Page-specific styles -->
+  <style>
+    /* ===== HERO OVERRIDE - plus petit ===== */
+    .hero {
+      min-height: 65vh;
+      padding: 120px var(--container-padding) var(--space-3xl);
+    }
+
+    /* ===== DESCRIPTION SECTION ===== */
+    .about-description {
+      background: #ffeee2;
+      padding: 50px 20px;
+    }
+
+    .about-description .container {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .about-description-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #000;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .about-description-line {
+      width: 100%;
+      max-width: 738px;
+      height: 5px;
+      background: #e86c24;
+      margin: 0 auto 25px;
+      border-radius: 3px;
+    }
+
+    .about-description-text {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(16px, 1.5vw, 20px);
+      line-height: 1.89;
+      color: #000;
+      text-align: center;
+    }
+
+    /* ===== WHY CHOOSE US - 4 Cards Grid ===== */
+    .about-why {
+      padding: 60px 20px;
+      background: #fff;
+    }
+
+    .about-why-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(24px, 3.5vw, 36px);
+      text-transform: uppercase;
+      color: #1a1a1a;
+      text-align: center;
+      margin: 0 0 12px;
+    }
+
+    .about-why-line {
+      width: 60px;
+      height: 3px;
+      background: #e86c24;
+      border-radius: 2px;
+      margin: 0 auto 40px;
+    }
+
+    .about-why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .about-why-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .about-why-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .about-why-card-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      color: #000;
+      position: relative;
+      display: inline-block;
+    }
+
+    .about-why-card-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 3px;
+      background: #e86c24;
+      border-radius: 2px;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .about-why-card:hover .about-why-card-title::after {
+      width: 100%;
+    }
+
+    .about-why-card-text {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    .about-why-card-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    /* ===== CTA SECTION ===== */
+    .about-cta-section {
+      padding: 20px 20px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+    }
+
+    .about-cta-button {
+      background: #ea6a28;
+      color: white;
+      padding: 16px 40px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: clamp(20px, 2vw, 26px);
+      letter-spacing: -0.13px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+      display: inline-block;
+    }
+
+    .about-cta-button:hover {
+      color: white;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 15px rgba(234, 106, 40, 0.3);
+      background: #ff8c50;
+    }
+
+    /* ===== WHO ARE WE ===== */
+    .about-who {
+      background: #ffeee2;
+      padding: 50px 20px;
+    }
+
+    .about-who .container {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .about-who-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #000;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .about-who-line {
+      width: 100%;
+      max-width: 738px;
+      height: 5px;
+      background: #e86c24;
+      margin: 0 auto 40px;
+      border-radius: 3px;
+    }
+
+    .about-who-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-who-img-wrap {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .about-who-img {
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-who-text {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(15px, 1.4vw, 18px);
+      line-height: 1.89;
+      color: #000;
+    }
+
+    /* ===== VISION ===== */
+    .about-vision {
+      background: #1a1a1a;
+      padding: 80px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-vision::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(232, 108, 36, 0.08) 0%, transparent 70%);
+    }
+
+    .about-vision .container {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-vision-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .about-vision-line {
+      width: 100%;
+      max-width: 500px;
+      height: 5px;
+      background: #e86c24;
+      margin: 0 auto 40px;
+      border-radius: 3px;
+    }
+
+    .about-vision-text {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(16px, 1.5vw, 20px);
+      line-height: 1.89;
+      color: #ccc;
+      text-align: center;
+    }
+
+    /* ===== ENGAGEMENTS - 3 Cards Grid ===== */
+    .about-engagements {
+      padding: 60px 20px;
+      background: #fff;
+    }
+
+    .about-engagements .container {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .about-engagements-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(30px, 4vw, 48px);
+      text-align: center;
+      margin-bottom: 20px;
+      color: #000;
+    }
+
+    .about-engagements-line {
+      width: 100%;
+      max-width: 772px;
+      height: 4px;
+      background: #e86c24;
+      margin: 0 auto 40px;
+      border-radius: 2px;
+    }
+
+    .about-engagements-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .about-engagement-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .about-engagement-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .about-engagement-icon {
+      width: 60px;
+      height: 60px;
+      background: #e86c24;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .about-engagement-icon svg {
+      width: 28px;
+      height: 28px;
+      fill: #fff;
+    }
+
+    .about-engagement-card-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      color: #000;
+      position: relative;
+      display: inline-block;
+    }
+
+    .about-engagement-card-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 3px;
+      background: #e86c24;
+      border-radius: 2px;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .about-engagement-card:hover .about-engagement-card-title::after {
+      width: 100%;
+    }
+
+    .about-engagement-card-text {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    /* ===== FINAL CTA ===== */
+    .about-final-cta {
+      padding: 80px 20px;
+      background: #ffeee2;
+      text-align: center;
+    }
+
+    .about-final-cta .container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .about-final-cta-text {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(16px, 1.5vw, 20px);
+      line-height: 1.89;
+      color: #000;
+      margin-bottom: 30px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .about-why-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-engagements-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .about-why-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .about-who-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .about-who-img {
+        height: 300px;
+      }
+
+      .about-who-text {
+        text-align: center;
+      }
+
+      .about-engagements-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .about-vision, .about-final-cta {
+        padding: 60px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip to content -->
+  <a href="#main-content" class="skip-to-content" data-i18n="nav.skip">Aller au contenu principal</a>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header-container">
+      <!-- Logo -->
+      <a href="index.html" class="logo" aria-label="VIBRA accueil">
+        <img src="assets/images/logo/logo_porge.png" alt="VIBRA" class="logo-image">
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-desktop" aria-label="Navigation principale">
+        <ul class="nav-menu">
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+              <span data-i18n="nav.prestations">Prestations</span>
+              <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="evenements-professionnels.html" class="nav-link" data-i18n="nav.professionnels">Professionnels</a></li>
+              <li><a href="evenements-particuliers.html" class="nav-link" data-i18n="nav.particuliers">Particuliers</a></li>
+              <li><a href="prestations-techniques.html" class="nav-link" data-i18n="nav.son-lumiere">Son & Lumière</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+              <span data-i18n="nav.artistes">Artistes</span>
+              <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="equipe-djs.html" class="nav-link" data-i18n="nav.djs">DJs</a></li>
+              <li><a href="equipe-solo-groupes.html" class="nav-link" data-i18n="nav.solo-groupes">Solo & Groupes</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="portfolio.html" class="nav-link" data-i18n="nav.realisations">Réalisations</a>
+          </li>
+          <li class="nav-item">
+            <a href="a-propos.html" class="nav-link active" data-i18n="nav.a-propos">À propos</a>
+          </li>
+          <li class="nav-item">
+            <a href="mix-playlists.html" class="nav-link" data-i18n="nav.nos-mixs">Nos mixs</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Header Right Section -->
+      <div class="header-right">
+        <a href="devis.html" class="btn btn-primary" data-i18n="nav.devis">Devis en ligne</a>
+        <div class="language-switcher">
+          <button class="lang-btn active" data-lang="fr" aria-label="Français">FR</button>
+          <span class="lang-separator">/</span>
+          <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav class="nav-mobile" aria-label="Navigation mobile">
+      <ul class="nav-menu">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle">
+            <span data-i18n="nav.prestations">Prestations</span>
+            <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="evenements-professionnels.html" class="nav-link" data-i18n="nav.professionnels">Professionnels</a></li>
+            <li><a href="evenements-particuliers.html" class="nav-link" data-i18n="nav.particuliers">Particuliers</a></li>
+            <li><a href="prestations-techniques.html" class="nav-link" data-i18n="nav.son-lumiere">Son & Lumière</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle">
+            <span data-i18n="nav.artistes">Artistes</span>
+            <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="equipe-djs.html" class="nav-link" data-i18n="nav.djs">DJs</a></li>
+            <li><a href="equipe-solo-groupes.html" class="nav-link" data-i18n="nav.solo-groupes">Solo & Groupes</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="portfolio.html" class="nav-link" data-i18n="nav.realisations">Réalisations</a>
+        </li>
+        <li class="nav-item">
+          <a href="a-propos.html" class="nav-link active" data-i18n="nav.a-propos">À propos</a>
+        </li>
+        <li class="nav-item">
+          <a href="mix-playlists.html" class="nav-link" data-i18n="nav.nos-mixs">Nos mixs</a>
+        </li>
+        <li class="nav-item">
+          <a href="devis.html" class="btn btn-primary btn-block" data-i18n="nav.devis">Devis en ligne</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="menu-overlay"></div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-background">
+        <img src="assets/images/page-accueil/carte-rooftop.webp" alt="Événement VIBRA en plein air" class="hero-parallax-bg" loading="eager">
+      </div>
+
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span data-i18n="about.hero.label">À PROPOS DE</span><br>
+          <span data-i18n="about.hero.title.line2">VIBRA</span>
+        </h1>
+        <p class="hero-subtitle" data-i18n="about.hero.tagline">
+          Votre agence événementielle premium, passionnée par la musique.
+        </p>
+
+        <div class="primary-ctas">
+          <a href="#description" class="btn btn-primary btn-large smooth-scroll" data-i18n="about.cta.discover">
+            Découvrir VIBRA
+          </a>
+          <a href="devis.html" class="btn btn-secondary btn-large" data-i18n="about.cta.devis">
+            Demander un devis
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Qui sommes-nous -->
+    <section class="about-who" id="who">
+      <div class="container">
+        <h2 class="about-who-title" data-i18n="about.who.title">Qui sommes-nous ?</h2>
+        <div class="about-who-line"></div>
+        <div class="about-who-grid">
+          <div class="about-who-img-wrap">
+            <img src="assets/images/page-djs/dj1-photo-1.webp" alt="Lucas - Fondateur de VIBRA" class="about-who-img" loading="lazy">
+          </div>
+          <p class="about-who-text" data-i18n="about.who.text">VIBRA est née de la passion de Lucas pour la musique et les événements. Après des années passées derrière les platines, dans les coulisses de soirées privées, de mariages et d'événements corporate, il a fondé VIBRA avec une ambition claire : créer des expériences musicales et événementielles uniques, sur-mesure et mémorables. Aujourd'hui, VIBRA c'est une équipe de DJs talentueux, de musiciens passionnés et de techniciens expérimentés, tous animés par la même envie de faire vibrer vos événements. Que ce soit pour une soirée d'entreprise, un mariage, un festival ou un événement privé, nous mettons notre expertise, notre énergie et notre créativité au service de vos projets.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notre vision -->
+    <section class="about-vision">
+      <div class="container">
+        <h2 class="about-vision-title" data-i18n="about.vision.title">Notre vision</h2>
+        <div class="about-vision-line"></div>
+        <p class="about-vision-text" data-i18n="about.vision.text">La musique est bien plus qu'un fond sonore : c'est le fil conducteur de vos émotions. Chez VIBRA, nous croyons que chaque note, chaque lumière et chaque détail technique contribue à raconter votre histoire. Notre approche mêle art, technologie et sensibilité pour transformer chaque événement en un moment suspendu dans le temps.</p>
+      </div>
+    </section>
+
+    <!-- Nos engagements -->
+    <section class="about-engagements">
+      <div class="container">
+        <h2 class="about-engagements-title" data-i18n="about.engagements.title">Nos engagements</h2>
+        <div class="about-engagements-line"></div>
+
+        <div class="about-engagements-grid">
+
+          <!-- Engagement 1 -->
+          <div class="about-engagement-card">
+            <div class="about-engagement-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+              </svg>
+            </div>
+            <h3 class="about-engagement-card-title" data-i18n="about.eng1.title">L'excellence artistique</h3>
+            <p class="about-engagement-card-text" data-i18n="about.eng1.text">Chaque prestation est pensée comme une performance, avec des artistes sélectionnés pour leur talent et leur capacité à s'adapter à votre univers.</p>
+          </div>
+
+          <!-- Engagement 2 -->
+          <div class="about-engagement-card">
+            <div class="about-engagement-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+              </svg>
+            </div>
+            <h3 class="about-engagement-card-title" data-i18n="about.eng2.title">La qualité technique</h3>
+            <p class="about-engagement-card-text" data-i18n="about.eng2.text">Nous utilisons exclusivement du matériel professionnel de dernière génération, installé et réglé par nos techniciens qualifiés.</p>
+          </div>
+
+          <!-- Engagement 3 -->
+          <div class="about-engagement-card">
+            <div class="about-engagement-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3 class="about-engagement-card-title" data-i18n="about.eng3.title">L'accompagnement personnalisé</h3>
+            <p class="about-engagement-card-text" data-i18n="about.eng3.text">De la première prise de contact au jour J, nous vous guidons avec attention et bienveillance pour que chaque détail soit à la hauteur de vos attentes.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="about-final-cta">
+      <div class="container">
+        <p class="about-final-cta-text" data-i18n="about.cta.text">Envie de donner vie à votre événement avec VIBRA ? Contactez-nous et créons ensemble une expérience musicale inoubliable !</p>
+        <a href="devis.html" class="about-cta-button" data-i18n="about.cta.btn">Contactez-nous</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-grid">
+        <!-- Brand Section -->
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo" aria-label="VIBRA - Retour à l'accueil">
+            <img src="assets/images/logo/logo_porge.png" alt="VIBRA" class="footer-logo-image">
+          </a>
+          <p class="footer-description" data-i18n="footer.description">
+            Votre agence événementielle premium spécialisée dans la sonorisation, l'éclairage et l'animation musicale pour tous vos événements.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="footer-social-link" aria-label="Instagram">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Links Section 1 -->
+        <div>
+          <h3 class="footer-section-title" data-i18n="footer.prestations">Prestations</h3>
+          <ul class="footer-links">
+            <li><a href="evenements-professionnels.html" class="footer-link" data-i18n="footer.events-pro">Événements Professionnels</a></li>
+            <li><a href="evenements-particuliers.html" class="footer-link" data-i18n="footer.events-part">Événements Particuliers</a></li>
+            <li><a href="prestations-techniques.html" class="footer-link" data-i18n="footer.services-tech">Services Techniques</a></li>
+          </ul>
+        </div>
+
+        <!-- Links Section 2 -->
+        <div>
+          <h3 class="footer-section-title" data-i18n="footer.artistes">Artistes</h3>
+          <ul class="footer-links">
+            <li><a href="equipe-djs.html" class="footer-link" data-i18n="footer.nos-djs">Nos DJs</a></li>
+            <li><a href="equipe-solo-groupes.html" class="footer-link" data-i18n="footer.solo-groupes">Solo & Groupes</a></li>
+            <li><a href="mix-playlists.html" class="footer-link" data-i18n="footer.mixs-playlists">Mixs & Playlists</a></li>
+          </ul>
+        </div>
+
+        <!-- Links Section 3 -->
+        <div>
+          <h3 class="footer-section-title" data-i18n="footer.a-propos">À propos</h3>
+          <ul class="footer-links">
+            <li><a href="portfolio.html" class="footer-link" data-i18n="footer.realisations">Nos Réalisations</a></li>
+            <li><a href="#contact" class="footer-link" data-i18n="footer.contact">Contact</a></li>
+            <li><a href="devis.html" class="footer-link" data-i18n="footer.devis">Devis en ligne</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p class="copyright" data-i18n="footer.copyright">&copy; 2026 VIBRA Event Agency. Tous droits réservés.</p>
+          <ul class="footer-legal-links">
+            <li><a href="#mentions" class="footer-legal-link" data-i18n="footer.mentions">Mentions légales</a></li>
+            <li><a href="#privacy" class="footer-legal-link" data-i18n="footer.privacy">Politique de confidentialité</a></li>
+            <li><a href="#cgv" class="footer-legal-link" data-i18n="footer.cgv">CGV</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="assets/js/i18n/translations.js"></script>
+  <script src="assets/js/i18n/lang-switcher.js"></script>
+  <script src="assets/js/main.js?v=2" type="module"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Scroll animation for cards
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      document.querySelectorAll('.about-why-card, .about-engagement-card').forEach(function(el) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+      });
+
+      // Smooth scroll for "Découvrir VIBRA" button
+      document.querySelectorAll('.smooth-scroll').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          var targetId = this.getAttribute('href').substring(1);
+          var target = document.getElementById(targetId);
+          if (!target) return;
+
+          var headerEl = document.querySelector('.header');
+          var headerHeight = headerEl ? headerEl.offsetHeight : 0;
+          var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          var startPosition = window.pageYOffset;
+          var distance = targetPosition - startPosition;
+          var duration = 1800;
+          var startTime = null;
+
+          function easeInOutCubic(t) {
+            return t < 0.5
+              ? 4 * t * t * t
+              : 1 - Math.pow(-2 * t + 2, 3) / 2;
+          }
+
+          function animation(currentTime) {
+            if (!startTime) startTime = currentTime;
+            var elapsed = currentTime - startTime;
+            var progress = Math.min(elapsed / duration, 1);
+            var ease = easeInOutCubic(progress);
+
+            window.scrollTo(0, startPosition + distance * ease);
+
+            if (progress < 1) {
+              requestAnimationFrame(animation);
+            }
+          }
+
+          requestAnimationFrame(animation);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

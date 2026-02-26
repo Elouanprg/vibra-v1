@@ -1,0 +1,99 @@
+============================================================
+  GUIDE DES IMAGES A REMPLACER - PAGE PARTICULIERS
+  evenements-particuliers.html
+============================================================
+
+Pour personnaliser la page, remplace les images placeholder
+par tes propres photos. Voici la liste de chaque emplacement :
+
+
+------------------------------------------------------------
+1. IMAGE HERO (fond plein ecran)
+------------------------------------------------------------
+   Ligne ~466
+   Fichier actuel : assets/images/services/premire_danse.webp
+   Ideal : Photo de mariage, premiere danse, ou ambiance
+           soiree privee (format paysage, min 1920x1080)
+
+
+------------------------------------------------------------
+2. CARTE "Sonorisation sur mesure"
+------------------------------------------------------------
+   Ligne ~511
+   Fichier actuel : assets/images/services/AiPulse2025_-_6356.webp
+   Ideal : Photo d'enceintes/sono dans un lieu de reception
+           (format paysage, min 800x400)
+
+
+------------------------------------------------------------
+3. CARTE "Mise en lumiere"
+------------------------------------------------------------
+   Ligne ~521
+   Fichier actuel : assets/images/services/e5a28361-bed1-4b59-bb94-4dfe585f1a1e (1).webp
+   Ideal : Photo d'eclairage/lumiere dans un mariage ou fete
+           (format paysage, min 800x400)
+
+
+------------------------------------------------------------
+4. CARTE "DJ & Animation"
+------------------------------------------------------------
+   Ligne ~531
+   Fichier actuel : assets/images/services/WhatsApp_Image_2024-08-30_at_19.22.10_defaced.webp
+   Ideal : Photo de DJ en action lors d'une soiree privee
+           (format paysage, min 800x400)
+
+
+------------------------------------------------------------
+5. CAROUSEL - Slide 1 (Mariage)
+------------------------------------------------------------
+   Ligne ~556
+   Fichier actuel : assets/images/events/NotiPlage_FDLM_2025_VF-268 (1) - Copie.webp
+   Ideal : Photo de mariage (format paysage, min 1400x560)
+   Legende : Modifie le <h3> et <p> pour le nom/lieu
+
+
+------------------------------------------------------------
+6. CAROUSEL - Slide 2 (Anniversaire)
+------------------------------------------------------------
+   Ligne ~566
+   Fichier actuel : assets/images/events/NotiPlage_FDLM_2025_VF-268 (2) - Copie.webp
+   Ideal : Photo d'anniversaire (format paysage, min 1400x560)
+   Legende : Modifie le <h3> et <p> pour le nom/lieu
+
+
+------------------------------------------------------------
+7. CAROUSEL - Slide 3 (Soiree Privee)
+------------------------------------------------------------
+   Ligne ~576
+   Fichier actuel : assets/images/events/NotiPlage_FDLM_2025_VF-268 (3) - Copie.webp
+   Ideal : Photo de soiree privee (format paysage, min 1400x560)
+   Legende : Modifie le <h3> et <p> pour le nom/lieu
+
+
+------------------------------------------------------------
+8. CAROUSEL - Slide 4 (Bapteme)
+------------------------------------------------------------
+   Ligne ~586
+   Fichier actuel : assets/images/events/NotiPlage_FDLM_2025_VF-268 (4) - Copie.webp
+   Ideal : Photo de bapteme/fete famille (format paysage, min 1400x560)
+   Legende : Modifie le <h3> et <p> pour le nom/lieu
+
+
+------------------------------------------------------------
+9. CAROUSEL - Slide 5 (Fiancailles)
+------------------------------------------------------------
+   Ligne ~596
+   Fichier actuel : assets/images/events/NotiPlage_FDLM_2025_VF-268 (5) - Copie.webp
+   Ideal : Photo de fiancailles (format paysage, min 1400x560)
+   Legende : Modifie le <h3> et <p> pour le nom/lieu
+
+
+============================================================
+  CONSEILS
+============================================================
+- Format recommande : .webp (plus leger, meilleur chargement)
+- Place tes images dans : assets/images/services/ ou assets/images/events/
+- Garde des noms de fichiers sans espaces ni accents si possible
+- Tu peux ajouter ou supprimer des slides dans le carousel
+  en copiant/collant un bloc <div class="swiper-slide">...</div>
+============================================================

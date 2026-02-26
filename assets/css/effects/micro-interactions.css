@@ -1,0 +1,285 @@
+/* Micro-interactions & Hover Effects */
+
+/* Smooth transitions for all interactive elements */
+.interactive {
+  transition: all var(--transition-base) var(--ease-smooth);
+}
+
+/* Lift effect on hover */
+.lift-on-hover {
+  transition: transform var(--transition-base) var(--ease-smooth),
+              box-shadow var(--transition-base) var(--ease-smooth);
+}
+
+.lift-on-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Scale on hover */
+.scale-on-hover {
+  transition: transform var(--transition-base) var(--ease-smooth);
+}
+
+.scale-on-hover:hover {
+  transform: scale(1.05);
+}
+
+/* Glow effect */
+.glow-on-hover {
+  position: relative;
+}
+
+.glow-on-hover::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: linear-gradient(45deg, var(--orange-primary), var(--orange-light));
+  opacity: 0;
+  filter: blur(15px);
+  z-index: -1;
+  transition: opacity var(--transition-base) var(--ease-smooth);
+  border-radius: inherit;
+}
+
+.glow-on-hover:hover::before {
+  opacity: 0.7;
+}
+
+/* Border highlight */
+.border-highlight {
+  position: relative;
+  border: 1px solid transparent;
+  transition: border-color var(--transition-base) var(--ease-smooth);
+}
+
+.border-highlight:hover {
+  border-color: var(--orange-primary);
+}
+
+/* Underline animation */
+.underline-on-hover {
+  position: relative;
+  display: inline-block;
+}
+
+.underline-on-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--orange-primary);
+  transition: width var(--transition-base) var(--ease-smooth);
+}
+
+.underline-on-hover:hover::after {
+  width: 100%;
+}
+
+/* Bounce on hover */
+.bounce-on-hover {
+  transition: transform var(--transition-base) var(--ease-bounce);
+}
+
+.bounce-on-hover:hover {
+  transform: translateY(-4px);
+}
+
+/* Rotate on hover */
+.rotate-on-hover {
+  transition: transform var(--transition-base) var(--ease-smooth);
+}
+
+.rotate-on-hover:hover {
+  transform: rotate(5deg);
+}
+
+/* Image zoom on hover */
+.image-zoom-container {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.image-zoom {
+  transition: transform var(--transition-slow) var(--ease-smooth);
+}
+
+.image-zoom-container:hover .image-zoom {
+  transform: scale(1.1);
+}
+
+/* Shine effect */
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s var(--ease-smooth);
+}
+
+.shine-effect:hover::before {
+  left: 150%;
+}
+
+/* Pulse animation */
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Slide in from left */
+.slide-in-left {
+  animation: slideInLeft 0.5s var(--ease-smooth);
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide in from right */
+.slide-in-right {
+  animation: slideInRight 0.5s var(--ease-smooth);
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade in */
+.fade-in {
+  animation: fadeIn 0.5s var(--ease-smooth);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fade in up */
+.fade-in-up {
+  animation: fadeInUp 0.6s var(--ease-smooth);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger animation classes (for JS to add delays) */
+.stagger-item {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s var(--ease-smooth);
+}
+
+.stagger-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.6s var(--ease-smooth);
+}
+
+/* Icon hover effects */
+.icon-hover {
+  transition: all var(--transition-base) var(--ease-smooth);
+}
+
+.icon-hover:hover {
+  color: var(--orange-primary);
+  transform: scale(1.1);
+}
+
+/* Ripple effect (for click feedback) */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.ripple:active::after {
+  width: 200px;
+  height: 200px;
+  opacity: 1;
+  transition: width 0.3s, height 0.3s, opacity 0.3s;
+}
+
+/* Disable all micro-interactions for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .lift-on-hover:hover,
+  .scale-on-hover:hover,
+  .bounce-on-hover:hover,
+  .rotate-on-hover:hover {
+    transform: none;
+  }
+
+  .shine-effect::before,
+  .pulse,
+  .slide-in-left,
+  .slide-in-right,
+  .fade-in,
+  .fade-in-up {
+    animation: none;
+  }
+
+  .image-zoom-container:hover .image-zoom {
+    transform: none;
+  }
+}

@@ -1,0 +1,48 @@
+/* Particle System Styles */
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.particles-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ensure content appears above particles */
+.particles-container > *:not(#particles-js) {
+  position: relative;
+  z-index: 2;
+}
+
+/* Alternative canvas-based particle container */
+.particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Reduce particle opacity on mobile for performance */
+@media (max-width: 767px) {
+  #particles-js {
+    opacity: 0.5;
+  }
+}
+
+/* Disable particles for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  #particles-js,
+  .particle-canvas {
+    display: none;
+  }
+}

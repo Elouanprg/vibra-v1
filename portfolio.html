@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VIBRA - Portfolio de nos événements à Bordeaux, Paris et Côte d'Azur. Mariages, corporate, festivals avec Safran, L'Oréal, Capgemini et plus.">
+  <meta name="keywords" content="portfolio événementiel Bordeaux, réalisations VIBRA, clients prestigieux, événements corporate Paris">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://vibra-events.com/portfolio.html">
+
+  <title>VIBRA - Portfolio | Réalisations Événementielles Bordeaux</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo/vibra-icon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/logo/logo_porge.png">
+  <link rel="apple-touch-icon" href="assets/images/logo/logo_porge.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { overflow-x: hidden; }
+
+    /* ===== HERO WITH BACKGROUND IMAGE ===== */
+    .port-hero {
+      position: relative;
+      min-height: 55vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 40px 60px;
+      overflow: hidden;
+    }
+    .port-hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .port-hero__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+    .port-hero__bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.85) 100%);
+    }
+    .port-hero h1 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(32px, 5vw, 56px);
+      text-transform: uppercase;
+      color: #fff;
+      margin: 0 0 10px;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+    .port-hero p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: clamp(14px, 2vw, 18px);
+      color: rgba(255,255,255,0.85);
+      margin: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== GRID ===== */
+    .port-grid-section {
+      background: #FFEFE4;
+      padding: 40px 50px 60px;
+    }
+    .port-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    /* ===== CARD ===== */
+    .port-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+    }
+    .port-card img.port-card__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .port-card:hover img.port-card__img {
+      transform: scale(1.05);
+    }
+    /* Filtre orange par défaut — plus marqué */
+    .port-card__orange {
+      position: absolute;
+      inset: 0;
+      background: rgba(232, 108, 36, 0.55);
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .port-card:hover .port-card__orange {
+      opacity: 0;
+    }
+    .port-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 55%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 16px 12px 32px;
+      gap: 6px;
+      z-index: 2;
+    }
+    /* Logo normalisé dans une boîte fixe */
+    .port-card__logo {
+      max-height: 32px;
+      max-width: 65%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.95;
+      transition: transform 0.4s ease;
+    }
+    .port-card:hover .port-card__logo {
+      transform: scale(1.12);
+    }
+    /* Compensation taille visuelle — logos avec padding interne dans l'image */
+    .port-card__logo[alt="Ricard"] {
+      transform: scale(4.8);
+      transform-origin: center center;
+    }
+    .port-card:hover .port-card__logo[alt="Ricard"] { transform: scale(5.4); }
+
+    .port-card__logo[alt="Santa Teresa"] {
+      transform: scale(1.8);
+      transform-origin: center center;
+    }
+    .port-card:hover .port-card__logo[alt="Santa Teresa"] { transform: scale(2.0); }
+
+    .port-card__logo[alt="Gendarmerie Nationale"] {
+      transform: scale(2.2);
+      transform-origin: center center;
+    }
+    .port-card:hover .port-card__logo[alt="Gendarmerie Nationale"] { transform: scale(2.46); }
+
+    .port-card__logo[alt="Société Générale"] {
+      transform: scale(1.3);
+      transform-origin: center center;
+    }
+    .port-card:hover .port-card__logo[alt="Société Générale"] { transform: scale(1.46); }
+
+    .port-card__logo[alt="Climb Up"] {
+      transform: scale(1.8);
+      transform-origin: center center;
+    }
+    .port-card:hover .port-card__logo[alt="Climb Up"] { transform: scale(2.0); }
+
+    .port-card__logo[alt="Calicéo"] {
+      transform: scale(2.8);
+      transform-origin: center center;
+    }
+    .port-card:hover .port-card__logo[alt="Calicéo"] { transform: scale(3.14); }
+
+    .port-card__logo[alt="Noti Plage"] {
+      transform: scale(1.6);
+      transform-origin: center center;
+    }
+    .port-card:hover .port-card__logo[alt="Noti Plage"] { transform: scale(1.79); }
+
+    .port-card__logo[alt="Scaleway"] {
+      transform: scale(1.5);
+      transform-origin: center center;
+    }
+    .port-card:hover .port-card__logo[alt="Scaleway"] { transform: scale(1.68); }
+
+    .port-card__logo[alt="Cap Sciences"] {
+      transform: scale(1.5);
+      transform-origin: center center;
+    }
+    .port-card:hover .port-card__logo[alt="Cap Sciences"] { transform: scale(1.68); }
+
+    .port-card__logo[alt="ALPHANOV"] {
+      transform: scale(1.4);
+      transform-origin: center center;
+    }
+    .port-card:hover .port-card__logo[alt="ALPHANOV"] { transform: scale(1.57); }
+
+    .port-card__logo[alt="Peyragudes"] {
+      transform: scale(1.6);
+      transform-origin: center center;
+    }
+    .port-card:hover .port-card__logo[alt="Peyragudes"] { transform: scale(1.68); }
+
+    .port-card__logo[alt="EBBS"] {
+      transform: scale(1.17);
+      transform-origin: center center;
+    }
+    .port-card:hover .port-card__logo[alt="EBBS"] { transform: scale(1.31); }
+    /* Texte hover (détail) */
+    .port-card__text {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+      color: rgba(255,255,255,0.85);
+      text-align: center;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .port-card:hover .port-card__text {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Nom d'événement (visible par défaut, pour cartes sans logo) */
+    .port-card__name {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 20px;
+      color: #fff;
+      text-align: center;
+      text-transform: uppercase;
+      line-height: 1.2;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+    }
+
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .port-grid { gap: 16px; }
+      .port-card__logo { max-height: 26px; }
+      .port-card__name { font-size: 17px; }
+      .port-card__overlay { padding: 14px 10px 28px; }
+      /* Réduction des scales logos pour tablette */
+      .port-card__logo[alt="Ricard"] { transform: scale(3.8); }
+      .port-card:hover .port-card__logo[alt="Ricard"] { transform: scale(4.3); }
+      .port-card__logo[alt="Calicéo"] { transform: scale(2.2); }
+      .port-card:hover .port-card__logo[alt="Calicéo"] { transform: scale(2.5); }
+      .port-card__logo[alt="Gendarmerie Nationale"] { transform: scale(1.8); }
+      .port-card:hover .port-card__logo[alt="Gendarmerie Nationale"] { transform: scale(2.0); }
+    }
+
+    @media (max-width: 768px) {
+      .port-hero { padding: 120px 20px 40px; min-height: 45vh; }
+      .port-grid-section { padding: 30px 24px 40px; }
+      .port-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .port-card__logo { max-height: 20px; }
+      .port-card__text { font-size: 8px; }
+      .port-card__name { font-size: 14px; }
+      .port-card__overlay { padding: 10px 8px 22px; gap: 4px; }
+      /* Réduction des scales logos pour mobile */
+      .port-card__logo[alt="Ricard"] { transform: scale(3.0); }
+      .port-card:hover .port-card__logo[alt="Ricard"] { transform: scale(3.4); }
+      .port-card__logo[alt="Calicéo"] { transform: scale(1.8); }
+      .port-card:hover .port-card__logo[alt="Calicéo"] { transform: scale(2.0); }
+      .port-card__logo[alt="Gendarmerie Nationale"] { transform: scale(1.5); }
+      .port-card:hover .port-card__logo[alt="Gendarmerie Nationale"] { transform: scale(1.7); }
+      .port-card__logo[alt="Santa Teresa"] { transform: scale(1.4); }
+      .port-card:hover .port-card__logo[alt="Santa Teresa"] { transform: scale(1.6); }
+      .port-card__logo[alt="Climb Up"] { transform: scale(1.4); }
+      .port-card:hover .port-card__logo[alt="Climb Up"] { transform: scale(1.6); }
+      .port-card__logo[alt="Noti Plage"] { transform: scale(1.3); }
+      .port-card:hover .port-card__logo[alt="Noti Plage"] { transform: scale(1.46); }
+    }
+
+    @media (max-width: 480px) {
+      .port-hero { padding: 100px 16px 30px; min-height: 40vh; }
+      .port-grid-section { padding: 20px 16px 30px; }
+      .port-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .port-card__overlay { padding: 6px 6px 16px; gap: 3px; }
+      .port-card__logo { max-height: 16px; }
+      .port-card__text { font-size: 7px; }
+      .port-card__name { font-size: 13px; }
+      /* Réduction des scales logos pour petit mobile */
+      .port-card__logo[alt="Ricard"] { transform: scale(2.2); }
+      .port-card:hover .port-card__logo[alt="Ricard"] { transform: scale(2.5); }
+      .port-card__logo[alt="Calicéo"] { transform: scale(1.4); }
+      .port-card:hover .port-card__logo[alt="Calicéo"] { transform: scale(1.6); }
+      .port-card__logo[alt="Gendarmerie Nationale"] { transform: scale(1.3); }
+      .port-card:hover .port-card__logo[alt="Gendarmerie Nationale"] { transform: scale(1.46); }
+      .port-card__logo[alt="Santa Teresa"] { transform: scale(1.2); }
+      .port-card:hover .port-card__logo[alt="Santa Teresa"] { transform: scale(1.34); }
+      .port-card__logo[alt="Climb Up"] { transform: scale(1.2); }
+      .port-card:hover .port-card__logo[alt="Climb Up"] { transform: scale(1.34); }
+      .port-card__logo[alt="Noti Plage"] { transform: scale(1.15); }
+      .port-card:hover .port-card__logo[alt="Noti Plage"] { transform: scale(1.29); }
+      .port-card__logo[alt="Scaleway"],
+      .port-card__logo[alt="Cap Sciences"],
+      .port-card__logo[alt="ALPHANOV"],
+      .port-card__logo[alt="Peyragudes"] { transform: scale(1.15); }
+      .port-card:hover .port-card__logo[alt="Scaleway"],
+      .port-card:hover .port-card__logo[alt="Cap Sciences"],
+      .port-card:hover .port-card__logo[alt="ALPHANOV"],
+      .port-card:hover .port-card__logo[alt="Peyragudes"] { transform: scale(1.29); }
+    }
+  </style>
+</head>
+<body data-page="portfolio">
+  <a href="#main-content" class="skip-to-content" data-i18n="nav.skip">Aller au contenu principal</a>
+
+  <header class="header" id="header">
+    <div class="header-container">
+      <a href="index.html" class="logo"><img src="assets/images/logo/logo_porge.png" alt="VIBRA" class="logo-image"></a>
+      <nav class="nav-desktop">
+        <ul class="nav-menu">
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.prestations">Prestations</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
+            <ul class="dropdown-menu">
+              <li><a href="evenements-professionnels.html" class="nav-link" data-i18n="nav.professionnels">Professionnels</a></li>
+              <li><a href="evenements-particuliers.html" class="nav-link" data-i18n="nav.particuliers">Particuliers</a></li>
+              <li><a href="prestations-techniques.html" class="nav-link" data-i18n="nav.son-lumiere">Son & Lumière</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.artistes">Artistes</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
+            <ul class="dropdown-menu">
+              <li><a href="equipe-djs.html" class="nav-link" data-i18n="nav.djs">DJs</a></li>
+              <li><a href="equipe-solo-groupes.html" class="nav-link" data-i18n="nav.solo-groupes">Solo & Groupes</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a href="portfolio.html" class="nav-link active" data-i18n="nav.realisations">Réalisations</a></li>
+          <li class="nav-item"><a href="a-propos.html" class="nav-link" data-i18n="nav.a-propos">À propos</a></li>
+          <li class="nav-item"><a href="mix-playlists.html" class="nav-link" data-i18n="nav.nos-mixs">Nos mixs</a></li>
+        </ul>
+      </nav>
+      <div class="header-right">
+        <a href="devis.html" class="btn btn-primary" data-i18n="nav.devis">Devis en ligne</a>
+        <div class="language-switcher">
+          <button class="lang-btn active" data-lang="fr">FR</button>
+          <span class="lang-separator">/</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+      </div>
+      <button class="menu-toggle"><span></span><span></span><span></span></button>
+    </div>
+    <nav class="nav-mobile">
+      <ul class="nav-menu">
+        <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.prestations">Prestations</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="evenements-professionnels.html" class="nav-link" data-i18n="nav.professionnels">Professionnels</a></li><li><a href="evenements-particuliers.html" class="nav-link" data-i18n="nav.particuliers">Particuliers</a></li><li><a href="prestations-techniques.html" class="nav-link" data-i18n="nav.son-lumiere">Son & Lumière</a></li></ul></li>
+        <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.artistes">Artistes</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="equipe-djs.html" class="nav-link" data-i18n="nav.djs">DJs</a></li><li><a href="equipe-solo-groupes.html" class="nav-link" data-i18n="nav.solo-groupes">Solo & Groupes</a></li></ul></li>
+        <li class="nav-item"><a href="portfolio.html" class="nav-link active" data-i18n="nav.realisations">Réalisations</a></li>
+        <li class="nav-item"><a href="a-propos.html" class="nav-link" data-i18n="nav.a-propos">À propos</a></li>
+        <li class="nav-item"><a href="mix-playlists.html" class="nav-link" data-i18n="nav.nos-mixs">Nos mixs</a></li>
+        <li class="nav-item"><a href="devis.html" class="btn btn-primary btn-block" data-i18n="nav.devis">Devis en ligne</a></li>
+      </ul>
+    </nav>
+    <div class="menu-overlay"></div>
+  </header>
+
+  <main id="main-content">
+
+    <section class="port-hero">
+      <div class="port-hero__bg">
+        <img src="assets/images/evenements/pro-scaleway/principale.webp" alt="Événement ai-PULSE par VIBRA" loading="eager">
+      </div>
+      <div style="position:relative;z-index:1;">
+        <h1 data-i18n="portfolio.title">Nos Réalisations</h1>
+        <p data-i18n="portfolio.subtitle">Retour en images sur les événements qui nous ont fait vibrer.</p>
+      </div>
+    </section>
+
+    <section class="port-grid-section">
+      <div class="port-grid">
+        <!-- Row 1 -->
+        <div class="port-card" data-event-id="pro-scaleway">
+          <img class="port-card__img" src="assets/images/evenements/pro-scaleway/principale.webp" alt="Scaleway" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <img class="port-card__logo" src="assets/images/logos-clients/scaleway.png" alt="Scaleway">
+            <span class="port-card__text" data-i18n="portfolio.scaleway.text">ai-PULSE · Station F</span>
+          </div>
+        </div>
+        <div class="port-card" data-event-id="pro-notiplage">
+          <img class="port-card__img" src="assets/images/evenements/pro-notiplage/galerie-2.webp" alt="Noti Plage" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <img class="port-card__logo" src="assets/images/logos-clients/noti-club-new.png" alt="Noti Plage">
+            <span class="port-card__text" data-i18n="portfolio.notiplage.text">Fête de la Musique</span>
+          </div>
+        </div>
+        <div class="port-card" data-event-id="pro-safran">
+          <img class="port-card__img" src="assets/images/evenements/pro-safran/principale.webp" alt="Safran" loading="lazy" style="object-position: center 40%">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <img class="port-card__logo" src="assets/images/logos-clients/safran-new.png" alt="Safran">
+            <span class="port-card__text" data-i18n="portfolio.safran.text">Afterwork</span>
+          </div>
+        </div>
+        <div class="port-card" data-event-id="pro-loreal">
+          <img class="port-card__img" src="assets/images/evenements/pro-loreal/galerie-2.webp" alt="L'Oréal" loading="lazy" style="object-position: center 30%">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <img class="port-card__logo" src="assets/images/logos-clients/loreal-new.png" alt="L'Oréal">
+            <span class="port-card__text" data-i18n="portfolio.loreal.text">Soirée corporate</span>
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="port-card" data-event-id="pro-capgemini">
+          <img class="port-card__img" src="assets/images/evenements/pro-capgemini/galerie-1.webp" alt="Capgemini" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <img class="port-card__logo" src="assets/images/logos-clients/capgemini-new.png" alt="Capgemini">
+            <span class="port-card__text" data-i18n="portfolio.capgemini.text">Séminaire</span>
+          </div>
+        </div>
+        <div class="port-card" data-event-id="part-mariage-lafitte">
+          <img class="port-card__img" src="assets/images/evenements/part-mariage-lafitte/principale.jpg" alt="Mariage" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__name" data-i18n="portfolio.name.mariage">Mariage</span>
+            <span class="port-card__text" data-i18n="portfolio.lafitte.text">Château Lafitte · Yvrac</span>
+          </div>
+        </div>
+        <div class="port-card" data-event-id="pro-gendarmerie">
+          <img class="port-card__img" src="assets/images/evenements/pro-gendarmerie/galerie-1.webp" alt="Gendarmerie" loading="lazy" style="object-position: center 45%">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <img class="port-card__logo" src="assets/images/logos-clients/gendarmerie-new.png" alt="Gendarmerie Nationale">
+            <span class="port-card__text" data-i18n="portfolio.gendarmerie.text">Gala officiel</span>
+          </div>
+        </div>
+        <div class="port-card" data-event-id="pro-sfeir">
+          <img class="port-card__img" src="assets/images/evenements/pro-sfeir/principale.webp" alt="SFEIR" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <img class="port-card__logo" src="assets/images/logos-clients/sfeir.png" alt="SFEIR">
+            <span class="port-card__text" data-i18n="portfolio.sfeir.text">Séminaire</span>
+          </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="port-card" data-event-id="pro-gina">
+          <img class="port-card__img" src="assets/images/evenements/pro-gina/principale.webp" alt="Gina & Pommery" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <img class="port-card__logo" src="assets/images/logos-clients/gina.png" alt="Gina & Pommery">
+            <span class="port-card__text" data-i18n="portfolio.gina.text">Pool Party</span>
+          </div>
+        </div>
+        <div class="port-card" data-event-id="pro-ricard">
+          <img class="port-card__img" src="assets/images/evenements/pro-ricard/principale.webp" alt="Ricard" loading="lazy" style="object-position: center 35%">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <img class="port-card__logo" src="assets/images/logos-clients/ricard.png" alt="Ricard">
+            <span class="port-card__text" data-i18n="portfolio.ricard.text">Soirée Carcans</span>
+          </div>
+        </div>
+        <div class="port-card" data-event-id="part-mariage-possible">
+          <img class="port-card__img" src="assets/images/evenements/part-mariage-possible/principale.jpg" alt="Mariage" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__name" data-i18n="portfolio.name.mariage">Mariage</span>
+            <span class="port-card__text" data-i18n="portfolio.possible.text">Domaine du Possible · Eauze</span>
+          </div>
+        </div>
+        <div class="port-card" data-event-id="pro-santa-teresa">
+          <img class="port-card__img" src="assets/images/evenements/pro-santa-teresa/principale.webp" alt="Santa Teresa" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <img class="port-card__logo" src="assets/images/logos-clients/santa-teresa.png" alt="Santa Teresa">
+            <span class="port-card__text" data-i18n="portfolio.santa-teresa.text">Soirée privée</span>
+          </div>
+        </div>
+
+        <!-- Row 4 -->
+        <div class="port-card" data-event-id="pro-capsciences">
+          <img class="port-card__img" src="assets/images/evenements/pro-capsciences/principale.webp" alt="Cap Sciences" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <img class="port-card__logo" src="assets/images/logos-clients/cap-sciences.webp" alt="Cap Sciences">
+            <span class="port-card__text" data-i18n="portfolio.capsciences.text">30 ans</span>
+          </div>
+        </div>
+        <div class="port-card" data-event-id="pro-alphanov-summer">
+          <img class="port-card__img" src="assets/images/evenements/pro-alphanov-summer/principale.webp" alt="ALPHANOV" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <img class="port-card__logo" src="assets/images/logos-clients/alphanov-new.png" alt="ALPHANOV">
+            <span class="port-card__text" data-i18n="portfolio.alphanov.text">Summer School</span>
+          </div>
+        </div>
+        <div class="port-card" data-event-id="part-mariage-bijoutier">
+          <img class="port-card__img" src="assets/images/evenements/part-mariage-bijoutier/principale.jpg" alt="Mariage" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__name" data-i18n="portfolio.name.mariage">Mariage</span>
+            <span class="port-card__text" data-i18n="portfolio.bijoutier.text">Domaine du Bijoutier · Lyon</span>
+          </div>
+        </div>
+        <div class="port-card" data-event-id="pro-socgen">
+          <img class="port-card__img" src="assets/images/evenements/pro-socgen/principale.webp" alt="Société Générale" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <img class="port-card__logo" src="assets/images/logos-clients/societe-generale.png" alt="Société Générale">
+            <span class="port-card__text" data-i18n="portfolio.socgen.text">Deauville</span>
+          </div>
+        </div>
+
+        <!-- Row 5 -->
+        <div class="port-card" data-event-id="pro-pompiers">
+          <img class="port-card__img" src="assets/images/evenements/pro-pompiers/principale.webp" alt="Pompiers" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__name" data-i18n="portfolio.name.pompiers">Pompiers</span>
+            <span class="port-card__text" data-i18n="portfolio.pompiers.text">Sainte-Barbe</span>
+          </div>
+        </div>
+        <div class="port-card" data-event-id="pro-fdlm-2024">
+          <img class="port-card__img" src="assets/images/evenements/pro-fdlm-2024/principale.jpg" alt="FDLM 2024" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__name" data-i18n="portfolio.name.fdlm">Fête de la Musique</span>
+            <span class="port-card__text" data-i18n="portfolio.fdlm2024.text">2024 · Pont Neuf, Paris</span>
+          </div>
+        </div>
+        <div class="port-card" data-event-id="part-mariage-arcachon">
+          <img class="port-card__img" src="assets/images/evenements/part-mariage-arcachon/principale.jpeg" alt="Mariage" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__name" data-i18n="portfolio.name.british-wedding">British Wedding</span>
+            <span class="port-card__text" data-i18n="portfolio.arcachon.text">Arcachon</span>
+          </div>
+        </div>
+        <div class="port-card" data-event-id="pro-caliceo">
+          <img class="port-card__img" src="assets/images/evenements/pro-caliceo/principale.webp" alt="Calicéo" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <img class="port-card__logo" src="assets/images/logos-clients/caliceo.png" alt="Calicéo">
+            <span class="port-card__text" data-i18n="portfolio.caliceo.text">DJ Set piscine</span>
+          </div>
+        </div>
+
+        <!-- Row 6 -->
+        <div class="port-card" data-event-id="pro-climbup">
+          <img class="port-card__img" src="assets/images/evenements/pro-climbup/principale.webp" alt="Climb Up" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <img class="port-card__logo" src="assets/images/logos-clients/climbup.png" alt="Climb Up">
+            <span class="port-card__text" data-i18n="portfolio.climbup.text">Black Lights</span>
+          </div>
+        </div>
+        <div class="port-card" data-event-id="pro-peyragudes">
+          <img class="port-card__img" src="assets/images/evenements/pro-peyragudes/principale.jpg" alt="Peyragudes" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <img class="port-card__logo" src="assets/images/logos-clients/peyragudes.webp" alt="Peyragudes">
+            <span class="port-card__text" data-i18n="portfolio.peyragudes.text">Funbreak</span>
+          </div>
+        </div>
+        <div class="port-card" data-event-id="pro-ebbs">
+          <img class="port-card__img" src="assets/images/evenements/pro-ebbs/principale.jpg" alt="EBBS" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <img class="port-card__logo" src="assets/images/logos-clients/ebbs.png" alt="EBBS">
+            <span class="port-card__text" data-i18n="portfolio.ebbs.text">Gala</span>
+          </div>
+        </div>
+        <div class="port-card" data-event-id="pro-fdlm-2022">
+          <img class="port-card__img" src="assets/images/evenements/pro-fdlm-2022/principale.jpg" alt="FDLM 2022" loading="lazy">
+          <div class="port-card__orange"></div>
+          <div class="port-card__overlay">
+            <span class="port-card__name" data-i18n="portfolio.name.fdlm">Fête de la Musique</span>
+            <span class="port-card__text" data-i18n="portfolio.fdlm2022.text">2022 · Bordeaux</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners bar -->
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo" aria-label="VIBRA - Retour à l'accueil">
+            <img src="assets/images/logo/logo_porge.png" alt="VIBRA" class="footer-logo-image">
+          </a>
+          <p class="footer-description" data-i18n="footer.description">
+            Votre agence événementielle premium spécialisée dans la sonorisation, l'éclairage et l'animation musicale pour tous vos événements.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="footer-social-link" aria-label="Instagram">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-section-title" data-i18n="footer.prestations">Prestations</h3>
+          <ul class="footer-links">
+            <li><a href="evenements-professionnels.html" class="footer-link" data-i18n="footer.events-pro">Événements Professionnels</a></li>
+            <li><a href="evenements-particuliers.html" class="footer-link" data-i18n="footer.events-part">Événements Particuliers</a></li>
+            <li><a href="prestations-techniques.html" class="footer-link" data-i18n="footer.services-tech">Services Techniques</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-section-title" data-i18n="footer.artistes">Artistes</h3>
+          <ul class="footer-links">
+            <li><a href="equipe-djs.html" class="footer-link" data-i18n="footer.nos-djs">Nos DJs</a></li>
+            <li><a href="equipe-solo-groupes.html" class="footer-link" data-i18n="footer.solo-groupes">Solo & Groupes</a></li>
+            <li><a href="mix-playlists.html" class="footer-link" data-i18n="footer.mixs-playlists">Mixs & Playlists</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-section-title" data-i18n="footer.a-propos">À propos</h3>
+          <ul class="footer-links">
+            <li><a href="portfolio.html" class="footer-link" data-i18n="footer.realisations">Nos Réalisations</a></li>
+            <li><a href="#contact" class="footer-link" data-i18n="footer.contact">Contact</a></li>
+            <li><a href="devis.html" class="footer-link" data-i18n="footer.devis">Devis en ligne</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p class="copyright" data-i18n-html="footer.copyright">&copy; 2026 VIBRA Event Agency. Tous droits réservés.</p>
+          <ul class="footer-legal-links">
+            <li><a href="#mentions" class="footer-legal-link" data-i18n="footer.mentions">Mentions légales</a></li>
+            <li><a href="#privacy" class="footer-legal-link" data-i18n="footer.privacy">Politique de confidentialité</a></li>
+            <li><a href="#cgv" class="footer-legal-link" data-i18n="footer.cgv">CGV</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="assets/js/i18n/translations.js"></script>
+  <script src="assets/js/i18n/lang-switcher.js"></script>
+  <script src="assets/js/main.js?v=2" type="module"></script>
+  <script src="assets/js/data/events-data.js?v=2"></script>
+  <script src="assets/js/components/event-modal.js?v=2"></script>
+</body>
+</html>

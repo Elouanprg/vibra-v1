@@ -1,0 +1,233 @@
+/* VIBRA Event Agency - Master CSS File */
+
+/* Base Styles */
+@import './reset.css';
+@import './variables.css';
+@import './typography.css';
+@import './layout.css';
+
+/* Components */
+@import './components/buttons.css';
+@import './components/cards.css';
+@import './components/header.css';
+@import './components/footer.css';
+@import './components/carousel.css';
+@import './components/event-modal.css';
+
+/* Effects */
+@import './effects/gradients.css';
+@import './effects/particles.css';
+@import './effects/grid-shimmer.css';
+@import './effects/parallax.css';
+@import './effects/micro-interactions.css';
+
+/* Page Styles */
+@import './pages/home.css';
+
+/* Global Styles */
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Utility Classes */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--orange-primary);
+  color: var(--white);
+  padding: var(--space-sm) var(--space-md);
+  text-decoration: none;
+  z-index: 9999;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* Loading states */
+.loading {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border: 3px solid var(--gray-200);
+  border-top-color: var(--orange-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== DARK MODE OVERRIDES ===== */
+
+/* Header */
+[data-theme="dark"] .header {
+  background: rgba(18, 18, 18, 0.95);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .dropdown-menu {
+  background: #1e1e1e;
+}
+
+[data-theme="dark"] .dropdown-menu .nav-link:hover {
+  background: #2a2a2a;
+}
+
+[data-theme="dark"] .menu-toggle span {
+  background: #f0f0f0;
+}
+
+[data-theme="dark"] .nav-mobile {
+  background: #1a1a1a;
+}
+
+/* Cards */
+[data-theme="dark"] .card,
+[data-theme="dark"] .rating-card {
+  background: #1e1e1e;
+}
+
+[data-theme="dark"] .card-image-container {
+  background: #222;
+}
+
+[data-theme="dark"] .team-social-link {
+  background: #2a2a2a;
+  color: #f0f0f0;
+}
+
+/* Footer */
+[data-theme="dark"] .footer {
+  background: #080808;
+}
+
+[data-theme="dark"] .footer-social-link {
+  background: #2a2a2a;
+}
+
+/* Page headers */
+[data-theme="dark"] .page-header {
+  background: #151515;
+}
+
+[data-theme="dark"] .page-title,
+[data-theme="dark"] .page-subtitle {
+  color: #f0f0f0;
+}
+
+/* CTA sections */
+[data-theme="dark"] .cta-section {
+  background: #151515;
+}
+
+[data-theme="dark"] .cta-title,
+[data-theme="dark"] .cta-subtitle {
+  color: #f0f0f0;
+}
+
+/* Technical page */
+[data-theme="dark"] .technical-section {
+  background: #121212;
+}
+
+[data-theme="dark"] .section-title,
+[data-theme="dark"] .technical-description,
+[data-theme="dark"] .technical-list li {
+  color: #e0e0e0;
+}
+
+/* Services section */
+[data-theme="dark"] .services-section {
+  background: #121212;
+}
+
+/* Social proof */
+[data-theme="dark"] .social-proof {
+  background: #1a1a1a;
+}
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+  color: var(--text-primary);
+}
+
+.dark-mode-toggle:hover {
+  background: rgba(128, 128, 128, 0.15);
+}
+
+.dark-mode-toggle svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.dark-mode-toggle .icon-sun {
+  display: none;
+}
+
+[data-theme="dark"] .dark-mode-toggle .icon-moon {
+  display: none;
+}
+
+[data-theme="dark"] .dark-mode-toggle .icon-sun {
+  display: block;
+  color: #fbbf24;
+}
+
+/* Print styles */
+@media print {
+  .header,
+  .footer,
+  .btn,
+  .scroll-indicator,
+  #particles-js,
+  .grid-overlay,
+  .gradient-bg {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}

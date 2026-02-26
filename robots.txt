@@ -1,0 +1,11 @@
+# robots.txt for VIBRA Event Agency
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://vibra-events.com/sitemap.xml
+
+# Disallow admin or private areas (if any in the future)
+# Disallow: /admin/
+# Disallow: /private/

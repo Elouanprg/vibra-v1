@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VIBRA - Découvrez nos mixs Mixcloud et playlists Spotify. DJs événementiels à Bordeaux, Paris et Côte d'Azur.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://vibra-events.com/mix-playlists.html">
+  <title>VIBRA - Mixs & Playlists | Univers Musical DJ Bordeaux</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo/vibra-icon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/logo/logo_porge.png">
+  <link rel="apple-touch-icon" href="assets/images/logo/logo_porge.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { overflow-x: hidden; }
+
+    /* ===== BASS VISUALIZER ===== */
+
+    .bass-viz {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 14px;
+      z-index: 999;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .bass-viz--left { left: 0; }
+    .bass-viz--right { right: 0; }
+    .bass-viz.active { opacity: 1; }
+
+    .bass-viz canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Halo glow derrière les barres */
+    .bass-viz::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 70px;
+      filter: blur(22px);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      background: linear-gradient(to bottom,
+        transparent 5%,
+        rgba(255, 107, 53, 0.12) 25%,
+        rgba(255, 107, 53, 0.25) 50%,
+        rgba(255, 107, 53, 0.12) 75%,
+        transparent 95%
+      );
+    }
+    .bass-viz--left::after { left: 0; }
+    .bass-viz--right::after { right: 0; }
+    .bass-viz.active::after { opacity: 1; }
+
+    /* ===== HERO ===== */
+
+    .mix-hero {
+      position: relative;
+      height: 550px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .mix-hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .mix-hero__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .mix-hero__bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.7) 100%);
+    }
+    .mix-hero__content {
+      position: relative;
+      z-index: 1;
+    }
+    .mix-hero__title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(36px, 6vw, 64px);
+      text-transform: uppercase;
+      color: #fff;
+      margin: 0 0 60px;
+    }
+    .mix-hero__buttons {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+    }
+    .mix-hero__btn {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 16px 40px;
+      min-width: 240px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .mix-hero__btn--mix,
+    .mix-hero__btn--playlist {
+      background: #FF6B35;
+      color: #fff;
+    }
+    .mix-hero__btn::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      background: linear-gradient(45deg, #FF6B35, #FF8C61);
+      opacity: 0;
+      filter: blur(15px);
+      z-index: -1;
+      transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .mix-hero__btn:hover::before {
+      opacity: 0.3;
+    }
+    .mix-hero__btn:hover {
+      box-shadow: 0 6px 16px rgba(255, 107, 53, 0.25);
+      color: #fff;
+    }
+    .mix-hero__btn svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    /* ===== SECTION TITLES ===== */
+    .mix-section {
+      padding: 60px 40px 20px;
+      background: #FFF5EE;
+    }
+    .mix-section__title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(28px, 4vw, 42px);
+      text-transform: uppercase;
+      color: #1a1a1a;
+      text-align: center;
+      margin: 0 0 8px;
+    }
+    .mix-section__title span {
+      color: #ea6a28;
+    }
+    .mix-section__line {
+      width: 60px;
+      height: 3px;
+      background: #e86c24;
+      margin: 0 auto 20px;
+      border-radius: 2px;
+    }
+    .mix-section__desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #666;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+
+    /* ===== MIX CARDS ===== */
+    .mix-list {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      padding-bottom: 40px;
+    }
+    .mix-item {
+      background: #1a1a1a;
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .mix-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+    }
+    .mix-item__header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .mix-item__number {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #FF6B35, #e05520);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 16px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .mix-item__info {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .mix-item__label {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 18px;
+      color: #fff;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .mix-item__label span {
+      display: none;
+    }
+    .mix-item__sub {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      margin: 2px 0 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .mix-item__embed {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .mix-item__embed iframe {
+      width: 100%;
+      height: 120px;
+      border: none;
+      display: block;
+    }
+    /* Last item centered if odd count */
+    .mix-list > .mix-item:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      max-width: 540px;
+      justify-self: center;
+    }
+
+    /* ===== PLAYLISTS ===== */
+    .playlist-section {
+      padding: 60px 40px;
+      background: #FFFBF9;
+    }
+    .playlist-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .playlist-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .playlist-card iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      display: block;
+    }
+
+    /* ===== CTA ===== */
+    .mix-cta {
+      text-align: center;
+      padding: 60px 40px 80px;
+      background: #fff;
+    }
+    .mix-cta__title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 28px;
+      color: #1a1a1a;
+      margin: 0 0 10px;
+    }
+    .mix-cta__sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #555;
+      margin: 0 0 30px;
+    }
+    .mix-cta .btn {
+      font-size: 16px;
+      padding: 14px 36px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .mix-hero { height: 420px; }
+      .mix-section { padding: 40px 16px 10px; }
+      .mix-list { grid-template-columns: 1fr; gap: 16px; padding: 0 0 30px; }
+      .mix-list > .mix-item:last-child:nth-child(odd) { max-width: 100%; }
+      .mix-item { padding: 16px; }
+      .mix-item__embed iframe { height: 120px; }
+      .playlist-section { padding: 40px 20px; }
+      .playlist-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .playlist-card iframe { height: 420px; }
+      .mix-cta { padding: 40px 20px 60px; }
+      .mix-hero__btn {
+        min-width: 220px;
+        padding: 14px 36px;
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .mix-hero { height: 360px; }
+      .mix-hero__buttons { flex-direction: column; align-items: center; }
+      .mix-hero__btn {
+        min-width: 200px;
+        padding: 12px 32px;
+        font-size: 0.9rem;
+      }
+      .mix-item { padding: 14px; gap: 10px; }
+      .mix-item__label { font-size: 16px; }
+      .mix-item__number { width: 32px; height: 32px; font-size: 13px; border-radius: 8px; }
+      .mix-item__embed iframe { height: 120px; }
+      .playlist-card iframe { height: 380px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-to-content" data-i18n="nav.skip">Aller au contenu principal</a>
+
+  <header class="header" id="header">
+    <div class="header-container">
+      <a href="index.html" class="logo"><img src="assets/images/logo/logo_porge.png" alt="VIBRA" class="logo-image"></a>
+      <nav class="nav-desktop"><ul class="nav-menu"><li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.prestations">Prestations</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="evenements-professionnels.html" class="nav-link" data-i18n="nav.professionnels">Professionnels</a></li><li><a href="evenements-particuliers.html" class="nav-link" data-i18n="nav.particuliers">Particuliers</a></li><li><a href="prestations-techniques.html" class="nav-link" data-i18n="nav.son-lumiere">Son & Lumière</a></li></ul></li><li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.artistes">Artistes</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="equipe-djs.html" class="nav-link" data-i18n="nav.djs">DJs</a></li><li><a href="equipe-solo-groupes.html" class="nav-link" data-i18n="nav.solo-groupes">Solo & Groupes</a></li></ul></li><li class="nav-item"><a href="portfolio.html" class="nav-link" data-i18n="nav.realisations">Réalisations</a></li><li class="nav-item"><a href="a-propos.html" class="nav-link" data-i18n="nav.a-propos">À propos</a></li><li class="nav-item"><a href="mix-playlists.html" class="nav-link active" data-i18n="nav.nos-mixs">Nos mixs</a></li></ul></nav>
+      <div class="header-right"><a href="devis.html" class="btn btn-primary" data-i18n="nav.devis">Devis en ligne</a><div class="language-switcher"><button class="lang-btn active" data-lang="fr">FR</button><span class="lang-separator">/</span><button class="lang-btn" data-lang="en">EN</button></div></div>
+      <button class="menu-toggle"><span></span><span></span><span></span></button>
+    </div>
+    <nav class="nav-mobile"><ul class="nav-menu"><li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.prestations">Prestations</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="evenements-professionnels.html" class="nav-link" data-i18n="nav.professionnels">Professionnels</a></li><li><a href="evenements-particuliers.html" class="nav-link" data-i18n="nav.particuliers">Particuliers</a></li><li><a href="prestations-techniques.html" class="nav-link" data-i18n="nav.son-lumiere">Son & Lumière</a></li></ul></li><li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle"><span data-i18n="nav.artistes">Artistes</span> <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a><ul class="dropdown-menu"><li><a href="equipe-djs.html" class="nav-link" data-i18n="nav.djs">DJs</a></li><li><a href="equipe-solo-groupes.html" class="nav-link" data-i18n="nav.solo-groupes">Solo & Groupes</a></li></ul></li><li class="nav-item"><a href="portfolio.html" class="nav-link" data-i18n="nav.realisations">Réalisations</a></li><li class="nav-item"><a href="a-propos.html" class="nav-link" data-i18n="nav.a-propos">À propos</a></li><li class="nav-item"><a href="mix-playlists.html" class="nav-link active" data-i18n="nav.nos-mixs">Nos mixs</a></li><li class="nav-item"><a href="devis.html" class="btn btn-primary btn-block" data-i18n="nav.devis">Devis en ligne</a></li></ul></nav>
+    <div class="menu-overlay"></div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- Hero -->
+    <section class="mix-hero">
+      <div class="mix-hero__bg">
+        <!-- Remplacez cette image par la vôtre dans : assets/images/page-mix/hero.webp -->
+        <img src="assets/images/page-mix/hero.webp" alt="DJ en live">
+      </div>
+      <div class="mix-hero__content">
+        <h1 class="mix-hero__title" data-i18n="mix.title">Nos Mix et Playlists</h1>
+        <div class="mix-hero__buttons">
+          <a href="#mixes" class="mix-hero__btn mix-hero__btn--mix">
+            <span data-i18n="mix.btn.mix">Mix</span>
+            <svg viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </a>
+          <a href="#playlists" class="mix-hero__btn mix-hero__btn--playlist">
+            <span data-i18n="mix.btn.playlist">Playlist</span>
+            <svg viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Mixs -->
+    <section class="mix-section" id="mixes">
+      <h2 class="mix-section__title"><span data-i18n="mix.section.title.1">NOS</span> <span data-i18n="mix.section.title.2">MIX</span></h2>
+      <div class="mix-section__line"></div>
+      <p class="mix-section__desc" data-i18n="mix.section.desc">Ces DJ sets sont des exemples vous permettant de voir comment nous mixons. Nous préparerons ensemble une playlist sur mesure pour votre événement.</p>
+
+      <div class="mix-list">
+        <!-- Mix 1 - Open Format -->
+        <div class="mix-item" data-title="Open Format" data-artist="RAMEL - Live Chopes & Wine">
+          <div class="mix-item__header">
+            <div class="mix-item__number">01</div>
+            <div class="mix-item__info">
+              <h3 class="mix-item__label">Open Format</h3>
+              <p class="mix-item__sub">RAMEL - Live Chopes & Wine</p>
+            </div>
+          </div>
+          <div class="mix-item__embed">
+            <iframe src="https://player-widget.mixcloud.com/?hide_cover=1&feed=https%3A%2F%2Fwww.mixcloud.com%2Framel_fr%2Framel-open-format-live-chopes-wine-generaliste%2F" loading="lazy"></iframe>
+          </div>
+        </div>
+
+        <!-- Mix 2 - Snake Chamber -->
+        <div class="mix-item" data-title="Snake Chamber" data-artist="RAMEL - Live L'Organiq x Dojo">
+          <div class="mix-item__header">
+            <div class="mix-item__number">02</div>
+            <div class="mix-item__info">
+              <h3 class="mix-item__label">Snake Chamber</h3>
+              <p class="mix-item__sub">RAMEL - Live L'Organiq x Dojo</p>
+            </div>
+          </div>
+          <div class="mix-item__embed">
+            <iframe src="https://player-widget.mixcloud.com/?hide_cover=1&feed=https%3A%2F%2Fwww.mixcloud.com%2Framel_fr%2Framel-snake-chamber-live-lorganiq-x-dojo-afro-house-latino-house%2F" loading="lazy"></iframe>
+          </div>
+        </div>
+
+        <!-- Mix 3 - Golden Cruise -->
+        <div class="mix-item" data-title="Golden Cruise" data-artist="RAMEL - Live Burdigala II">
+          <div class="mix-item__header">
+            <div class="mix-item__number">03</div>
+            <div class="mix-item__info">
+              <h3 class="mix-item__label">Golden Cruise</h3>
+              <p class="mix-item__sub">RAMEL - Live Burdigala II</p>
+            </div>
+          </div>
+          <div class="mix-item__embed">
+            <iframe src="https://player-widget.mixcloud.com/?hide_cover=1&feed=https%3A%2F%2Fwww.mixcloud.com%2Framel_fr%2Framel-golden-cruise-live-burdigala-ii-house%2F" loading="lazy"></iframe>
+          </div>
+        </div>
+
+        <!-- Mix 4 - Savage -->
+        <div class="mix-item" data-title="Savage" data-artist="RAMEL - Live Vice Versa Marseille">
+          <div class="mix-item__header">
+            <div class="mix-item__number">04</div>
+            <div class="mix-item__info">
+              <h3 class="mix-item__label">Savage</h3>
+              <p class="mix-item__sub">RAMEL - Live Vice Versa Marseille</p>
+            </div>
+          </div>
+          <div class="mix-item__embed">
+            <iframe src="https://player-widget.mixcloud.com/?hide_cover=1&feed=https%3A%2F%2Fwww.mixcloud.com%2Framel_fr%2Framel-savage-live-vice-versa-marseille-reggaeton-baile-funk-hip-hop%2F" loading="lazy"></iframe>
+          </div>
+        </div>
+
+        <!-- Mix 5 - Sakura 3 -->
+        <div class="mix-item" data-title="Sakura 3" data-artist="RAMEL - Live Zigzag x Dojo">
+          <div class="mix-item__header">
+            <div class="mix-item__number">05</div>
+            <div class="mix-item__info">
+              <h3 class="mix-item__label">Sakura 3</h3>
+              <p class="mix-item__sub">RAMEL - Live Zigzag x Dojo</p>
+            </div>
+          </div>
+          <div class="mix-item__embed">
+            <iframe src="https://player-widget.mixcloud.com/?hide_cover=1&feed=https%3A%2F%2Fwww.mixcloud.com%2Framel_fr%2Framel-sakura-3-live-zigzag-x-dojo-house-latino-house-to-tech-house%2F" loading="lazy"></iframe>
+          </div>
+        </div>
+
+        <!-- Mix 6 - Teka -->
+        <div class="mix-item" data-title="Teka" data-artist="RAMEL">
+          <div class="mix-item__header">
+            <div class="mix-item__number">06</div>
+            <div class="mix-item__info">
+              <h3 class="mix-item__label">Teka</h3>
+              <p class="mix-item__sub">RAMEL</p>
+            </div>
+          </div>
+          <div class="mix-item__embed">
+            <iframe src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Framel_fr%2Fteka%2F" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Playlists -->
+    <section class="playlist-section" id="playlists">
+      <h2 class="mix-section__title" data-i18n-html="mix.playlists.title">Nos <span>Playlists</span></h2>
+      <div class="mix-section__line"></div>
+      <p class="mix-section__desc" data-i18n="mix.playlists.desc">Ces playlists sont des exemples vous permettant de voir certains sons que nous mixons habituellement. Nous préparerons ensemble une playlist sur mesure pour votre événement.</p>
+
+      <div class="playlist-grid">
+        <!-- Playlist 1 -->
+        <div class="playlist-card">
+          <iframe src="https://open.spotify.com/embed/playlist/3H4AcFO99ezXfRaIXqaGQH?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+
+        <!-- Playlist 2 -->
+        <div class="playlist-card">
+          <iframe src="https://open.spotify.com/embed/playlist/6MTSo9Q2qWSZITzuGRpc8p?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+
+        <!-- Playlist 3 -->
+        <div class="playlist-card">
+          <iframe src="https://open.spotify.com/embed/playlist/3vv98zRui0OAsAbBjedSEp?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+
+        <!-- Playlist 4 -->
+        <div class="playlist-card">
+          <iframe src="https://open.spotify.com/embed/playlist/5tNPAeAPCIlf1QD68nUVrm?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+
+        <!-- Playlist 5 -->
+        <div class="playlist-card">
+          <iframe src="https://open.spotify.com/embed/playlist/4KzrcG9ZtZ0gn5QGczLjhf?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+
+        <!-- Playlist 6 -->
+        <div class="playlist-card">
+          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1r8VGYjDLFS8R6z2toZuAI?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="mix-cta">
+      <h2 class="mix-cta__title" data-i18n="mix.cta.title">Vous aimez notre univers musical ?</h2>
+      <p class="mix-cta__sub" data-i18n="mix.cta.subtitle">Réservez-nous pour votre prochain événement</p>
+      <a href="devis.html" class="btn btn-primary" data-i18n="mix.cta.btn">Demander un devis</a>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo" aria-label="VIBRA - Retour à l'accueil">
+            <img src="assets/images/logo/logo_porge.png" alt="VIBRA" class="footer-logo-image">
+          </a>
+          <p class="footer-description" data-i18n="footer.description">
+            Votre agence événementielle premium spécialisée dans la sonorisation, l'éclairage et l'animation musicale pour tous vos événements.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="footer-social-link" aria-label="Instagram">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-section-title" data-i18n="footer.prestations">Prestations</h3>
+          <ul class="footer-links">
+            <li><a href="evenements-professionnels.html" class="footer-link" data-i18n="footer.events-pro">Événements Professionnels</a></li>
+            <li><a href="evenements-particuliers.html" class="footer-link" data-i18n="footer.events-part">Événements Particuliers</a></li>
+            <li><a href="prestations-techniques.html" class="footer-link" data-i18n="footer.services-tech">Services Techniques</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-section-title" data-i18n="footer.artistes">Artistes</h3>
+          <ul class="footer-links">
+            <li><a href="equipe-djs.html" class="footer-link" data-i18n="footer.nos-djs">Nos DJs</a></li>
+            <li><a href="equipe-solo-groupes.html" class="footer-link" data-i18n="footer.solo-groupes">Solo & Groupes</a></li>
+            <li><a href="mix-playlists.html" class="footer-link" data-i18n="footer.mixs-playlists">Mixs & Playlists</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-section-title" data-i18n="footer.a-propos">À propos</h3>
+          <ul class="footer-links">
+            <li><a href="portfolio.html" class="footer-link" data-i18n="footer.realisations">Nos Réalisations</a></li>
+            <li><a href="#contact" class="footer-link" data-i18n="footer.contact">Contact</a></li>
+            <li><a href="devis.html" class="footer-link" data-i18n="footer.devis">Devis en ligne</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p class="copyright" data-i18n-html="footer.copyright">&copy; 2026 VIBRA Event Agency. Tous droits réservés.</p>
+          <ul class="footer-legal-links">
+            <li><a href="#mentions" class="footer-legal-link" data-i18n="footer.mentions">Mentions légales</a></li>
+            <li><a href="#privacy" class="footer-legal-link" data-i18n="footer.privacy">Politique de confidentialité</a></li>
+            <li><a href="#cgv" class="footer-legal-link" data-i18n="footer.cgv">CGV</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bass Visualizer -->
+  <div class="bass-viz bass-viz--left"><canvas></canvas></div>
+  <div class="bass-viz bass-viz--right"><canvas></canvas></div>
+
+  <!-- Mixcloud Widget API -->
+  <script src="https://widget.mixcloud.com/media/js/widgetApi.js"></script>
+
+  <!-- Spotify IFrame API callback (must be defined BEFORE loading the API script) -->
+  <script>
+    window.onSpotifyIframeApiReady = function(IFrameAPI) {
+      if (window._initSpotifyWhenReady) {
+        window._initSpotifyWhenReady(IFrameAPI);
+      } else {
+        window._spotifyIFrameAPI = IFrameAPI;
+      }
+    };
+  </script>
+  <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+
+  <script src="assets/js/i18n/translations.js"></script>
+  <script src="assets/js/i18n/lang-switcher.js"></script>
+  <script src="assets/js/main.js?v=2" type="module"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // === SMOOTH SCROLL WITH HEADER OFFSET ===
+      document.querySelectorAll('.mix-hero__btn').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          var targetId = this.getAttribute('href').substring(1);
+          var target = document.getElementById(targetId);
+          if (!target) return;
+          var headerHeight = document.querySelector('.header') ? document.querySelector('.header').offsetHeight : 0;
+          var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+        });
+      });
+
+      // === BASS VISUALIZER ===
+      var bassLeft = document.querySelector('.bass-viz--left');
+      var bassRight = document.querySelector('.bass-viz--right');
+      var canvasL = bassLeft.querySelector('canvas');
+      var canvasR = bassRight.querySelector('canvas');
+      var isBassActive = false;
+      var animFrame = null;
+      var bassState = { energy: 0, target: 0, tick: 0 };
+
+      function resizeCanvases() {
+        [canvasL, canvasR].forEach(function(c) {
+          c.width = 14 * window.devicePixelRatio;
+          c.height = window.innerHeight * window.devicePixelRatio;
+          c.style.width = '14px';
+          c.style.height = '100%';
+        });
+      }
+      resizeCanvases();
+      window.addEventListener('resize', resizeCanvases);
+
+      function drawBass(canvas, energy, mirror) {
+        var ctx = canvas.getContext('2d');
+        var w = canvas.width; var h = canvas.height;
+        ctx.clearRect(0, 0, w, h);
+        var barCount = 40, barH = h / barCount, centerY = h / 2;
+        for (var i = 0; i < barCount; i++) {
+          var y = i * barH;
+          var dist = Math.abs((y + barH / 2) - centerY) / centerY;
+          var falloff = Math.max(0, 1 - dist * 1.3);
+          var noise = Math.sin(bassState.tick * 0.08 + i * 0.7) * 0.3 + 0.7;
+          var barEnergy = energy * falloff * noise;
+          var barWidth = Math.max(1, barEnergy * w * 2.5);
+          ctx.fillStyle = 'rgba(255,107,53,' + Math.min(1, barEnergy * 1.4).toFixed(3) + ')';
+          if (mirror) { ctx.fillRect(w - barWidth, y + 1, barWidth, barH - 2); }
+          else { ctx.fillRect(0, y + 1, barWidth, barH - 2); }
+        }
+      }
+      function animateBass() {
+        bassState.tick++;
+        if (bassState.tick % 8 === 0) bassState.target = 0.4 + Math.random() * 0.6;
+        if (bassState.tick % 25 === 0 && Math.random() > 0.5) bassState.target = 0.85 + Math.random() * 0.15;
+        bassState.target *= 0.92;
+        bassState.energy += (bassState.target - bassState.energy) * 0.25;
+        drawBass(canvasL, bassState.energy, false);
+        drawBass(canvasR, bassState.energy, true);
+        if (isBassActive) animFrame = requestAnimationFrame(animateBass);
+      }
+      function startBass() {
+        if (!isBassActive) { isBassActive = true; bassLeft.classList.add('active'); bassRight.classList.add('active'); bassState.tick = 0; animateBass(); }
+      }
+      function stopBass() {
+        isBassActive = false; bassLeft.classList.remove('active'); bassRight.classList.remove('active');
+        if (animFrame) cancelAnimationFrame(animFrame);
+      }
+
+      // === MIXCLOUD & SPOTIFY - Bass visualizer only ===
+      var mcWidgets = [];
+      var spotifyControllers = [];
+
+      // === CONNECT MIXCLOUD WIDGETS ===
+      var mixItems = document.querySelectorAll('.mix-item');
+
+      mixItems.forEach(function(item, index) {
+        var iframe = item.querySelector('.mix-item__embed iframe');
+
+        if (typeof Mixcloud !== 'undefined' && Mixcloud.PlayerWidget) {
+          var widget = Mixcloud.PlayerWidget(iframe);
+          mcWidgets.push(widget);
+
+          widget.ready.then(function() {
+            widget.events.play.on(function() {
+              // Pause les autres widgets Mixcloud
+              mcWidgets.forEach(function(w) { if (w !== widget) w.pause(); });
+              // Pause Spotify si actif
+              spotifyControllers.forEach(function(sc) { sc.pause(); });
+              startBass();
+            });
+            widget.events.pause.on(function() { stopBass(); });
+            widget.events.ended.on(function() { stopBass(); });
+          });
+        }
+      });
+
+      // === CONNECT SPOTIFY EMBEDS VIA IFRAME API ===
+      function initSpotifyControllers(IFrameAPI) {
+        var spotifyIframes = document.querySelectorAll('.playlist-card iframe');
+        spotifyIframes.forEach(function(iframe, index) {
+          var src = iframe.getAttribute('src') || '';
+          var match = src.match(/embed\/(playlist|track|album)\/([a-zA-Z0-9]+)/);
+          if (!match) return;
+          var type = match[1];
+          var id = match[2];
+          var uri = 'spotify:' + type + ':' + id;
+
+          IFrameAPI.createController(iframe, { uri: uri }, function(controller) {
+            spotifyControllers.push(controller);
+
+            controller.addListener('playback_update', function(e) {
+              var isPaused = e.data.isPaused;
+
+              if (!isPaused) {
+                // Pause Mixcloud si actif
+                mcWidgets.forEach(function(w) { w.pause(); });
+                // Pause les AUTRES Spotify controllers
+                spotifyControllers.forEach(function(sc) {
+                  if (sc !== controller) sc.pause();
+                });
+                startBass();
+              } else {
+                stopBass();
+              }
+            });
+          });
+        });
+      }
+
+      // If Spotify API already loaded before DOMContentLoaded, init now
+      if (window._spotifyIFrameAPI) {
+        initSpotifyControllers(window._spotifyIFrameAPI);
+      } else {
+        window._initSpotifyWhenReady = initSpotifyControllers;
+      }
+    });
+  </script>
+</body>
+</html>

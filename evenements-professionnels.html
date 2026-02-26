@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VIBRA - Événements professionnels à Bordeaux, Paris et Côte d'Azur. Séminaires, soirées corporate, lancements produits, team building avec DJ et sonorisation premium.">
+  <meta name="keywords" content="événement corporate Bordeaux, séminaire entreprise, soirée corporate Paris, DJ entreprise, team building Côte d'Azur">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://vibra-events.com/evenements-professionnels.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="VIBRA - Événements Professionnels | Bordeaux, Paris, Côte d'Azur">
+  <meta property="og:description" content="Organisez des événements professionnels mémorables avec VIBRA à Bordeaux, Paris et sur la Côte d'Azur.">
+  <meta property="og:image" content="https://vibra-events.com/assets/images/logo/logo_porge.png">
+  <meta property="og:url" content="https://vibra-events.com/evenements-professionnels.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+
+  <title>VIBRA - Événements Professionnels Bordeaux | Corporate & Séminaires</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo/vibra-icon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/logo/logo_porge.png">
+  <link rel="apple-touch-icon" href="assets/images/logo/logo_porge.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <!-- Page-specific styles -->
+  <style>
+    /* ===== DESCRIPTION SECTION ===== */
+    .pro-description {
+      background: #ffeee2;
+      padding: 50px 20px;
+    }
+
+    .pro-description .container {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .pro-description-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #000;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .pro-description-line {
+      width: 100%;
+      max-width: 738px;
+      height: 5px;
+      background: #e86c24;
+      margin: 0 auto 25px;
+      border-radius: 3px;
+    }
+
+    .pro-description-text {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(16px, 1.5vw, 20px);
+      line-height: 1.89;
+      color: #000;
+      text-align: center;
+    }
+
+    /* ===== SERVICES GRID - 3 Cards ===== */
+    .pro-services {
+      padding: 60px 20px;
+      background: #fff;
+    }
+
+    .pro-services-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      text-align: center;
+      color: #000;
+      margin-bottom: 12px;
+    }
+
+    .pro-services-line {
+      width: 100%;
+      max-width: 500px;
+      height: 4px;
+      background: #e86c24;
+      margin: 0 auto 40px;
+      border-radius: 2px;
+    }
+
+    .pro-services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .pro-service-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .pro-service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .pro-service-card-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      color: #000;
+      position: relative;
+      display: inline-block;
+    }
+
+    .pro-service-card-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 3px;
+      background: #e86c24;
+      border-radius: 2px;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .pro-service-card:hover .pro-service-card-title::after {
+      width: 100%;
+    }
+
+    .pro-service-card-text {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    .pro-service-card-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    /* ===== CTA SECTION ===== */
+    .pro-cta {
+      padding: 20px 20px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+    }
+
+    .pro-cta-button {
+      background: #ea6a28;
+      color: white;
+      padding: 16px 40px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: clamp(20px, 2vw, 26px);
+      letter-spacing: -0.13px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+      display: inline-block;
+    }
+
+    .pro-cta-button:hover {
+      color: white;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 15px rgba(234, 106, 40, 0.3);
+      background: #ff8c50;
+    }
+
+    /* ===== PORTFOLIO SECTION ===== */
+    .pro-portfolio {
+      padding: 60px 20px 30px;
+      background: #fff;
+    }
+
+    .pro-portfolio-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(30px, 4vw, 48px);
+      text-align: center;
+      margin-bottom: 20px;
+      color: #000;
+    }
+
+    .pro-portfolio-line {
+      width: 100%;
+      max-width: 772px;
+      height: 4px;
+      background: #e86c24;
+      margin: 0 auto 40px;
+      border-radius: 2px;
+    }
+
+    /* ===== CAROUSEL ===== */
+    .pro-carousel-wrapper {
+      padding: 0 20px 80px;
+      background: #fff;
+    }
+
+    .pro-carousel {
+      max-width: 1428px;
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .pro-carousel .swiper-wrapper {
+      transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+    }
+
+    .pro-carousel .swiper-slide {
+      position: relative;
+      height: 560px;
+    }
+
+    .pro-carousel .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .pro-carousel .slide-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 40px 40px;
+      color: #fff;
+      z-index: 2;
+    }
+
+    .pro-carousel .slide-caption::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: -1;
+    }
+
+    .pro-carousel .slide-caption::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent, rgba(234, 106, 40, 0.85));
+      opacity: 0;
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: -1;
+    }
+
+    .pro-carousel .swiper-slide:hover .slide-caption::before {
+      opacity: 0;
+    }
+
+    .pro-carousel .swiper-slide:hover .slide-caption::after {
+      opacity: 1;
+    }
+
+    .pro-carousel .slide-caption h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 26px;
+      margin-bottom: 6px;
+      color: #fff;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .pro-carousel .slide-caption p {
+      font-size: 18px;
+      color: #fff;
+      opacity: 0.95;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    .pro-carousel .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      background: #ccc;
+      opacity: 1;
+    }
+
+    .pro-carousel .swiper-pagination-bullet-active {
+      width: 16px;
+      height: 16px;
+      background: #ea6a28;
+    }
+
+    .pro-carousel .swiper-button-next,
+    .pro-carousel .swiper-button-prev {
+      width: 40px;
+      height: 40px;
+      background: #ea6a28;
+      border-radius: 50%;
+      color: #fff;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .pro-carousel .swiper-button-next::after,
+    .pro-carousel .swiper-button-prev::after {
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .pro-carousel .swiper-button-next:hover,
+    .pro-carousel .swiper-button-prev:hover {
+      background: #ff8c50;
+      transform: scale(1.1);
+    }
+
+    /* ===== SON & LUMIÈRE SECTIONS ===== */
+    .tech-sticky-section {
+      background: #fff;
+    }
+
+    .tech-sticky-section--sono {
+      background: #FFEFE4;
+    }
+
+    .tech-sticky-section--light {
+      background: #FFFBF9;
+    }
+
+    .tech-sticky-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+      min-height: 100vh;
+    }
+
+    .tech-sticky-wrap.reverse {
+      direction: rtl;
+    }
+
+    .tech-sticky-wrap.reverse > * {
+      direction: ltr;
+    }
+
+    .tech-text {
+      position: sticky;
+      top: 120px;
+      align-self: start;
+      padding: 60px 40px 60px 0;
+      height: fit-content;
+    }
+
+    .tech-text-right {
+      padding: 60px 0 60px 20px;
+    }
+
+    .tech-section-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 42px;
+      text-transform: uppercase;
+      color: #000;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      line-height: 1.1;
+      display: inline-block;
+      position: relative;
+    }
+
+    .tech-section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #e86c24;
+      border-radius: 2px;
+    }
+
+    .tech-section-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    .tech-images-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 40px 0 16px;
+    }
+
+    .tech-images-col img {
+      width: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+    }
+
+    .tech-images-row-asym {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 16px;
+    }
+
+    .tech-images-row-asym img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .tech-images-row-equal {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .tech-images-row-equal img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .tech-img-full {
+      height: 380px;
+    }
+
+    .tech-cta {
+      text-align: center;
+      padding: 60px 0 80px;
+      background: #fff;
+    }
+
+    .tech-cta-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 32px;
+      color: #000;
+      margin-bottom: 12px;
+    }
+
+    .tech-cta-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .tech-cta-btn {
+      display: inline-block;
+      background: #ea6a28;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      padding: 16px 40px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+      box-shadow: 0 4px 12px rgba(234, 106, 40, 0.25);
+    }
+
+    .tech-cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(234, 106, 40, 0.4);
+      background: #ff8c50;
+      color: #fff;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .pro-services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pro-carousel .swiper-slide {
+        height: 400px;
+      }
+
+      .tech-section-title {
+        font-size: 34px;
+      }
+
+      .tech-img-full {
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .pro-services-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+      }
+
+      .pro-carousel .swiper-slide {
+        height: 300px;
+      }
+
+      .pro-carousel .slide-caption {
+        padding: 20px;
+      }
+
+      .pro-carousel .slide-caption h3 {
+        font-size: 20px;
+      }
+
+      .pro-carousel .slide-caption p {
+        font-size: 15px;
+      }
+
+      .tech-sticky-wrap {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+        min-height: auto;
+      }
+
+      .tech-text {
+        position: relative;
+        top: auto;
+        padding: 40px 0 20px;
+      }
+
+      .tech-text-right {
+        padding: 40px 0 20px;
+      }
+
+      .tech-images-col {
+        padding: 0 0 40px;
+      }
+
+      .tech-images-row-asym {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .tech-images-row-asym img {
+        height: 180px;
+      }
+
+      .tech-images-row-equal img {
+        height: 180px;
+      }
+
+      .tech-img-full {
+        height: 220px;
+      }
+
+      .tech-section-title {
+        font-size: 28px;
+      }
+
+      .pro-carousel .swiper-button-next,
+      .pro-carousel .swiper-button-prev {
+        width: 32px;
+        height: 32px;
+      }
+
+      .pro-carousel .swiper-button-next::after,
+      .pro-carousel .swiper-button-prev::after {
+        font-size: 12px;
+      }
+
+      .pro-carousel .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+      }
+
+      .pro-carousel .swiper-pagination-bullet-active {
+        width: 12px;
+        height: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .pro-carousel .swiper-slide {
+        height: 220px;
+      }
+
+      .pro-carousel .slide-caption {
+        padding: 14px;
+      }
+
+      .pro-carousel .slide-caption h3 {
+        font-size: 16px;
+        margin-bottom: 4px;
+      }
+
+      .pro-carousel .slide-caption p {
+        font-size: 13px;
+      }
+
+      .pro-carousel .swiper-button-next,
+      .pro-carousel .swiper-button-prev {
+        width: 28px;
+        height: 28px;
+      }
+
+      .pro-carousel .swiper-button-next::after,
+      .pro-carousel .swiper-button-prev::after {
+        font-size: 10px;
+      }
+
+      .pro-carousel-wrapper {
+        padding: 0 12px 40px;
+      }
+
+      .pro-carousel {
+        border-radius: 12px;
+      }
+
+      .tech-images-row-asym img {
+        height: 140px;
+      }
+
+      .tech-images-row-equal img {
+        height: 140px;
+      }
+
+      .tech-img-full {
+        height: 180px;
+      }
+
+      .tech-section-title {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip to content -->
+  <a href="#main-content" class="skip-to-content" data-i18n="nav.skip">Aller au contenu principal</a>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header-container">
+      <a href="index.html" class="logo" aria-label="VIBRA accueil">
+        <img src="assets/images/logo/logo_porge.png" alt="VIBRA" class="logo-image">
+      </a>
+
+      <nav class="nav-desktop" aria-label="Navigation principale">
+        <ul class="nav-menu">
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle active" aria-haspopup="true" aria-expanded="false">
+              <span data-i18n="nav.prestations">Prestations</span>
+              <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="evenements-professionnels.html" class="nav-link" data-i18n="nav.professionnels">Professionnels</a></li>
+              <li><a href="evenements-particuliers.html" class="nav-link" data-i18n="nav.particuliers">Particuliers</a></li>
+              <li><a href="prestations-techniques.html" class="nav-link" data-i18n="nav.son-lumiere">Son & Lumière</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+              <span data-i18n="nav.artistes">Artistes</span>
+              <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="equipe-djs.html" class="nav-link" data-i18n="nav.djs">DJs</a></li>
+              <li><a href="equipe-solo-groupes.html" class="nav-link" data-i18n="nav.solo-groupes">Solo & Groupes</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="portfolio.html" class="nav-link" data-i18n="nav.realisations">Réalisations</a>
+          </li>
+          <li class="nav-item">
+            <a href="a-propos.html" class="nav-link" data-i18n="nav.a-propos">À propos</a>
+          </li>
+          <li class="nav-item">
+            <a href="mix-playlists.html" class="nav-link" data-i18n="nav.nos-mixs">Nos mixs</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <a href="devis.html" class="btn btn-primary" data-i18n="nav.devis">Devis en ligne</a>
+        <div class="language-switcher">
+          <button class="lang-btn active" data-lang="fr" aria-label="Français">FR</button>
+          <span class="lang-separator">/</span>
+          <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+        </div>
+      </div>
+
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <nav class="nav-mobile" aria-label="Navigation mobile">
+      <ul class="nav-menu">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle active">
+            <span data-i18n="nav.prestations">Prestations</span>
+            <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="evenements-professionnels.html" class="nav-link" data-i18n="nav.professionnels">Professionnels</a></li>
+            <li><a href="evenements-particuliers.html" class="nav-link" data-i18n="nav.particuliers">Particuliers</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle">
+            <span data-i18n="nav.artistes">Artistes</span>
+            <svg class="dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="equipe-djs.html" class="nav-link" data-i18n="nav.djs">DJs</a></li>
+            <li><a href="equipe-solo-groupes.html" class="nav-link" data-i18n="nav.solo-groupes">Solo & Groupes</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="portfolio.html" class="nav-link" data-i18n="nav.realisations">Réalisations</a>
+        </li>
+        <li class="nav-item">
+          <a href="a-propos.html" class="nav-link" data-i18n="nav.a-propos">À propos</a>
+        </li>
+        <li class="nav-item">
+          <a href="mix-playlists.html" class="nav-link" data-i18n="nav.nos-mixs">Nos mixs</a>
+        </li>
+        <li class="nav-item">
+          <a href="devis.html" class="btn btn-primary btn-block" data-i18n="nav.devis">Devis en ligne</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="menu-overlay"></div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-background">
+        <img src="assets/images/page-evenements-pro/hero.webp" alt="Événement professionnel VIBRA - L'Oréal" class="hero-parallax-bg" loading="eager">
+      </div>
+
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span data-i18n="pro.hero.title">NOS ÉVÉNEMENTS</span><br>
+          <span data-i18n="pro.hero.subtitle">PROFESSIONNELS</span>
+        </h1>
+        <p class="hero-subtitle" data-i18n="pro.hero.tagline">
+          Une ambiance rythmée, des souvenirs impérissables.
+        </p>
+
+        <div class="primary-ctas">
+          <a href="#description" class="btn btn-primary btn-large smooth-scroll" data-i18n="pro.cta.prestations">
+            Nos prestations
+          </a>
+          <a href="devis.html" class="btn btn-secondary btn-large" data-i18n="pro.cta.devis">
+            Demander un devis
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Description Section - Fond pêche -->
+    <section class="pro-description" id="description">
+      <div class="container">
+        <h2 class="pro-description-title" data-i18n="pro.intro.title">Une Ambiance Rythmée et Élégante</h2>
+        <div class="pro-description-line"></div>
+        <p class="pro-description-text" data-i18n="pro.intro.text">
+          Boostez l'énergie de vos événements professionnels avec une ambiance musicale adaptée et une mise en lumières aux couleurs de votre entreprise. Que ce soit pour un afterwork, un séminaire ou une soirée corporate, nous vous proposons des DJ sets raffinés et/ou dynamiques, parfaitement calibrés pour votre public. Un événement à l'image de votre entreprise, un renfort des liens entre collaborateurs, des souvenirs impérissables.
+        </p>
+      </div>
+    </section>
+
+    <!-- Services Grid - 3 cartes -->
+    <section class="pro-services" id="services">
+      <h2 class="pro-services-title" data-i18n="pro.accompagnement.title">Notre Accompagnement</h2>
+      <div class="pro-services-line"></div>
+      <div class="pro-services-grid">
+
+        <!-- Service 1 - Sonorisation -->
+        <div class="pro-service-card">
+          <h3 class="pro-service-card-title" data-i18n="pro.service1.title">Installation de la sonorisation</h3>
+          <p class="pro-service-card-text" data-i18n="pro.service1.text">
+            Équipement professionnel de haute qualité pour une restitution sonore parfaite dans tous vos espaces.
+          </p>
+          <img src="assets/images/page-evenements-pro/carte-sonorisation.webp" alt="Sonorisation professionnelle" class="pro-service-card-image" loading="lazy">
+        </div>
+
+        <!-- Service 2 - Lumière -->
+        <div class="pro-service-card">
+          <h3 class="pro-service-card-title" data-i18n="pro.service2.title">Mise en lumière</h3>
+          <p class="pro-service-card-text" data-i18n="pro.service2.text">
+            Création d'ambiances lumineuses sur mesure avec les couleurs de votre entreprise.
+          </p>
+          <img src="assets/images/page-evenements-pro/carte-lumiere.webp" alt="Mise en lumière événementielle" class="pro-service-card-image" loading="lazy">
+        </div>
+
+        <!-- Service 3 - Booking DJ -->
+        <div class="pro-service-card">
+          <h3 class="pro-service-card-title" data-i18n="pro.service3.title">Booking DJ</h3>
+          <p class="pro-service-card-text" data-i18n="pro.service3.text">
+            Sélection de DJs professionnels adaptés à votre public et à l'ambiance souhaitée.
+          </p>
+          <img src="assets/images/page-evenements-pro/carte-dj.webp" alt="Booking DJ professionnel" class="pro-service-card-image" loading="lazy">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="pro-portfolio" id="portfolio">
+      <h2 class="pro-portfolio-title" data-i18n="pro.carousel.title">Exemples de prestations réalisées</h2>
+      <div class="pro-portfolio-line"></div>
+    </section>
+
+    <!-- Carousel -->
+    <section class="pro-carousel-wrapper">
+      <div class="swiper pro-carousel">
+        <div class="swiper-wrapper">
+
+          <!-- Slide 1 - Scaleway -->
+          <div class="swiper-slide" data-event-id="pro-scaleway">
+            <img src="assets/images/evenements/pro-scaleway/principale.webp" alt="Scaleway - ai-PULSE - Station F" loading="lazy">
+            <div class="slide-caption">
+              <h3 data-i18n="pro.slide1.title">Scaleway</h3>
+              <p data-i18n="pro.slide1.subtitle">Événement ai-PULSE - Station F</p>
+            </div>
+          </div>
+
+          <!-- Slide 2 - L'Oréal -->
+          <div class="swiper-slide" data-event-id="pro-loreal">
+            <img src="assets/images/evenements/pro-loreal/galerie-2.webp" alt="L'Oréal Paris - Institut de l'Entreprise" loading="lazy" style="object-position: center 30%">
+            <div class="slide-caption">
+              <h3 data-i18n="pro.slide2.title">L'Oréal Paris</h3>
+              <p data-i18n="pro.slide2.subtitle">Institut de l'Entreprise - Le Visionnaire</p>
+            </div>
+          </div>
+
+          <!-- Slide 3 - Noti Plage -->
+          <div class="swiper-slide" data-event-id="pro-notiplage">
+            <img src="assets/images/evenements/pro-notiplage/galerie-2.webp" alt="Noti Plage - Fête de la Musique" loading="lazy">
+            <div class="slide-caption">
+              <h3 data-i18n="pro.slide3.title">Noti Plage</h3>
+              <p data-i18n="pro.slide3.subtitle">Fête de la Musique - Paris</p>
+            </div>
+          </div>
+
+          <!-- Slide 4 - Gendarmerie Nationale -->
+          <div class="swiper-slide" data-event-id="pro-gendarmerie">
+            <img src="assets/images/evenements/pro-gendarmerie/galerie-1.webp" alt="Gendarmerie Nationale - Tulle" loading="lazy" style="object-position: center 45%">
+            <div class="slide-caption">
+              <h3 data-i18n="pro.slide4.title">Gendarmerie Nationale</h3>
+              <p data-i18n="pro.slide4.subtitle">Gala officiel - Tulle</p>
+            </div>
+          </div>
+
+          <!-- Slide 5 - Safran -->
+          <div class="swiper-slide" data-event-id="pro-safran">
+            <img src="assets/images/evenements/pro-safran/principale.webp" alt="Safran - Afterwork - Quai de la Photo" loading="lazy" style="object-position: center 40%">
+            <div class="slide-caption">
+              <h3 data-i18n="pro.slide5.title">Safran</h3>
+              <p data-i18n="pro.slide5.subtitle">Afterwork - Quai de la Photo, Paris</p>
+            </div>
+          </div>
+
+          <!-- Slide 6 - Capgemini -->
+          <div class="swiper-slide" data-event-id="pro-capgemini">
+            <img src="assets/images/evenements/pro-capgemini/galerie-1.webp" alt="Capgemini - Séminaire" loading="lazy">
+            <div class="slide-caption">
+              <h3 data-i18n="pro.slide6.title">Capgemini</h3>
+              <p data-i18n="pro.slide6.subtitle">Séminaire - La Rotonde Stalingrad</p>
+            </div>
+          </div>
+
+          <!-- Slide 7 - Cap Sciences -->
+          <div class="swiper-slide" data-event-id="pro-capsciences">
+            <img src="assets/images/evenements/pro-capsciences/principale.webp" alt="Cap Sciences - 30 ans" loading="lazy">
+            <div class="slide-caption">
+              <h3 data-i18n="pro.slide7.title">Cap Sciences</h3>
+              <p data-i18n="pro.slide7.subtitle">30 ans - Bordeaux</p>
+            </div>
+          </div>
+
+          <!-- Slide 8 - Santa Teresa -->
+          <div class="swiper-slide" data-event-id="pro-santa-teresa">
+            <img src="assets/images/evenements/pro-santa-teresa/principale.webp" alt="Santa Teresa - Borne Hôtel" loading="lazy">
+            <div class="slide-caption">
+              <h3 data-i18n="pro.slide8.title">Santa Teresa 1796</h3>
+              <p data-i18n="pro.slide8.subtitle">Soirée de marque - Borne Hôtel, Bordeaux</p>
+            </div>
+          </div>
+
+          <!-- Slide 9 - Ricard -->
+          <div class="swiper-slide" data-event-id="pro-ricard">
+            <img src="assets/images/evenements/pro-ricard/principale.webp" alt="Ricard - Soirée de la marque" loading="lazy" style="object-position: center 35%">
+            <div class="slide-caption">
+              <h3 data-i18n="pro.slide9.title">Ricard</h3>
+              <p data-i18n="pro.slide9.subtitle">Soirée de la marque - Carcans</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Navigation -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+    <!-- CTA Button -->
+    <section class="pro-cta">
+      <a href="prestations-techniques.html" class="pro-cta-button" data-i18n="pro.cta.detail">Plus de détail technique</a>
+    </section>
+
+    <!-- CTA -->
+    <section class="tech-cta">
+      <h2 class="tech-cta-title" data-i18n="tech.cta.title">Une demande en particulier ?</h2>
+      <p class="tech-cta-sub" data-i18n="tech.cta.subtitle">Contactez-nous pour un devis personnalisé</p>
+      <a href="devis.html" class="tech-cta-btn" data-i18n="tech.cta.btn">Demander un devis</a>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-grid">
+        <!-- Brand Section -->
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo" aria-label="VIBRA - Retour à l'accueil">
+            <img src="assets/images/logo/logo_porge.png" alt="VIBRA" class="footer-logo-image">
+          </a>
+          <p class="footer-description" data-i18n="footer.description">
+            Votre agence événementielle premium spécialisée dans la sonorisation, l'éclairage et l'animation musicale pour tous vos événements.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="footer-social-link" aria-label="Instagram">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Links Section 1 -->
+        <div>
+          <h3 class="footer-section-title" data-i18n="footer.prestations">Prestations</h3>
+          <ul class="footer-links">
+            <li><a href="evenements-professionnels.html" class="footer-link" data-i18n="footer.events-pro">Événements Professionnels</a></li>
+            <li><a href="evenements-particuliers.html" class="footer-link" data-i18n="footer.events-part">Événements Particuliers</a></li>
+            <li><a href="prestations-techniques.html" class="footer-link" data-i18n="footer.services-tech">Services Techniques</a></li>
+          </ul>
+        </div>
+
+        <!-- Links Section 2 -->
+        <div>
+          <h3 class="footer-section-title" data-i18n="footer.artistes">Artistes</h3>
+          <ul class="footer-links">
+            <li><a href="equipe-djs.html" class="footer-link" data-i18n="footer.nos-djs">Nos DJs</a></li>
+            <li><a href="equipe-solo-groupes.html" class="footer-link" data-i18n="footer.solo-groupes">Solo & Groupes</a></li>
+            <li><a href="mix-playlists.html" class="footer-link" data-i18n="footer.mixs-playlists">Mixs & Playlists</a></li>
+          </ul>
+        </div>
+
+        <!-- Links Section 3 -->
+        <div>
+          <h3 class="footer-section-title" data-i18n="footer.a-propos">À propos</h3>
+          <ul class="footer-links">
+            <li><a href="portfolio.html" class="footer-link" data-i18n="footer.realisations">Nos Réalisations</a></li>
+            <li><a href="#contact" class="footer-link" data-i18n="footer.contact">Contact</a></li>
+            <li><a href="devis.html" class="footer-link" data-i18n="footer.devis">Devis en ligne</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p class="copyright" data-i18n="footer.copyright">&copy; 2026 VIBRA Event Agency. Tous droits réservés.</p>
+          <ul class="footer-legal-links">
+            <li><a href="#mentions" class="footer-legal-link" data-i18n="footer.mentions">Mentions légales</a></li>
+            <li><a href="#privacy" class="footer-legal-link" data-i18n="footer.privacy">Politique de confidentialité</a></li>
+            <li><a href="#cgv" class="footer-legal-link" data-i18n="footer.cgv">CGV</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="assets/js/i18n/translations.js"></script>
+  <script src="assets/js/i18n/lang-switcher.js"></script>
+  <script src="assets/js/main.js?v=2" type="module"></script>
+  <script src="assets/js/data/events-data.js?v=2"></script>
+  <script src="assets/js/components/event-modal.js?v=2"></script>
+
+  <!-- Initialize Carousel -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      new Swiper('.pro-carousel', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: true,
+        speed: 1200,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        cssMode: false,
+      });
+
+      // Scroll animation for service cards
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      document.querySelectorAll('.pro-service-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+      });
+
+      // Smooth scroll for "Nos prestations" button
+      document.querySelectorAll('.smooth-scroll').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const target = document.getElementById(targetId);
+          if (!target) return;
+
+          const headerHeight = document.querySelector('.header') ? document.querySelector('.header').offsetHeight : 0;
+          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          const startPosition = window.pageYOffset;
+          const distance = targetPosition - startPosition;
+          const duration = 1800;
+          let startTime = null;
+
+          function easeInOutCubic(t) {
+            return t < 0.5
+              ? 4 * t * t * t
+              : 1 - Math.pow(-2 * t + 2, 3) / 2;
+          }
+
+          function animation(currentTime) {
+            if (!startTime) startTime = currentTime;
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const ease = easeInOutCubic(progress);
+
+            window.scrollTo(0, startPosition + distance * ease);
+
+            if (progress < 1) {
+              requestAnimationFrame(animation);
+            }
+          }
+
+          requestAnimationFrame(animation);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

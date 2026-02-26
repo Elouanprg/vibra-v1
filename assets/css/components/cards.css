@@ -1,0 +1,231 @@
+/* Card Components with Lift Effect */
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform var(--transition-base) var(--ease-smooth),
+              box-shadow var(--transition-base) var(--ease-smooth);
+  will-change: transform;
+  position: relative;
+}
+
+/* Card lift on hover */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-2xl);
+}
+
+.card:active {
+  transform: translateY(-4px);
+}
+
+/* Card image */
+.card-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform var(--transition-base) var(--ease-smooth);
+}
+
+.card:hover .card-image {
+  transform: scale(1.02);
+}
+
+.card-image-container {
+  position: relative;
+  overflow: hidden;
+  background: var(--gray-100);
+}
+
+/* Card content */
+.card-content {
+  padding: var(--space-lg);
+}
+
+.card-title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--space-sm);
+  color: var(--text-primary);
+}
+
+.card-description {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+/* Service card with gradient rectangle */
+.service-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border: 4px solid var(--orange-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2);
+  transition: all 0.4s var(--ease-smooth);
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card:hover {
+  border-color: var(--orange-primary);
+  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.4);
+  transform: translateY(-4px);
+}
+
+/* Growing gradient rectangle - REMOVED */
+.service-card::after {
+  display: none;
+}
+
+/* Small gradient overlay at bottom of image extending to text */
+.service-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 107, 53, 0.6) 100%
+  );
+  transition: height 0.4s var(--ease-smooth);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.service-card:hover::before {
+  height: 120px;
+}
+
+.service-card .card-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Portfolio card with orange filter */
+.portfolio-card {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.portfolio-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 107, 53, 0.7);
+  transition: opacity 0.4s var(--ease-smooth);
+  z-index: 1;
+}
+
+.portfolio-card:hover .portfolio-overlay {
+  opacity: 0;
+}
+
+.portfolio-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 20%;
+  transition: transform 0.4s var(--ease-smooth);
+  position: relative;
+  z-index: 2;
+}
+
+.portfolio-card:hover .portfolio-logo {
+  transform: scale(1.05);
+}
+
+/* Team card */
+.team-card {
+  text-align: center;
+}
+
+.team-card-image {
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.team-card-name {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  margin-bottom: var(--space-sm);
+}
+
+.team-card-role {
+  font-size: var(--text-base);
+  color: var(--orange-primary);
+  margin-bottom: var(--space-md);
+}
+
+.team-card-bio {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-lg);
+}
+
+/* Social links on team cards */
+.team-social-links {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+}
+
+.team-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: var(--gray-100);
+  color: var(--text-primary);
+  transition: all var(--transition-base) var(--ease-smooth);
+}
+
+.team-social-link:hover {
+  background: var(--orange-primary);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* Cursor proximity effect (applied via JS) */
+.proximity-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 107, 53, 0.2),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-base) var(--ease-smooth);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.proximity-card:hover::before {
+  opacity: 1;
+}
+
+/* Disable animations for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .card:hover,
+  .service-card:hover,
+  .portfolio-card:hover {
+    transform: none;
+  }
+
+  .card-image:hover,
+  .portfolio-logo:hover {
+    transform: none;
+  }
+}

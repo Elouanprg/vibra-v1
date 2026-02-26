@@ -1,0 +1,156 @@
+/* Carousel / Swiper Customizations */
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Navigation buttons */
+.swiper-button-prev,
+.swiper-button-next {
+  width: 44px;
+  height: 44px;
+  background: var(--white);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-base) var(--ease-smooth);
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 20px;
+  font-weight: var(--font-bold);
+  color: var(--orange-primary);
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background: var(--orange-primary);
+  transform: scale(1.1);
+}
+
+.swiper-button-prev:hover:after,
+.swiper-button-next:hover:after {
+  color: var(--white);
+}
+
+.swiper-button-disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Hide navigation on mobile */
+@media (max-width: 767px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+}
+
+/* Pagination */
+.swiper-pagination {
+  bottom: 20px;
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: var(--gray-300);
+  opacity: 1;
+  transition: all var(--transition-base) var(--ease-smooth);
+}
+
+.swiper-pagination-bullet-active {
+  width: 30px;
+  border-radius: 5px;
+  background: var(--orange-primary);
+}
+
+/* Portfolio carousel */
+.portfolio-carousel {
+  padding-bottom: var(--space-3xl);
+}
+
+.portfolio-carousel .swiper-slide {
+  height: auto;
+}
+
+/* Team carousel */
+.team-carousel {
+  padding: var(--space-lg) 0;
+}
+
+.team-carousel .swiper-slide {
+  opacity: 0.5;
+  transition: opacity var(--transition-base) var(--ease-smooth);
+}
+
+.team-carousel .swiper-slide-active {
+  opacity: 1;
+}
+
+/* Mixes carousel */
+.mixes-carousel {
+  padding: var(--space-xl) 0;
+}
+
+.mixes-carousel .swiper-slide {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Carousel loading state */
+.swiper-lazy-preloader {
+  border: 2px solid var(--orange-primary);
+  border-top-color: transparent;
+  animation: swiper-preloader-spin 1s infinite linear;
+}
+
+@keyframes swiper-preloader-spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Carousel container spacing */
+.carousel-container {
+  position: relative;
+  margin: var(--space-2xl) 0;
+}
+
+/* Make sure carousel images don't break layout */
+.swiper-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Smooth transition between slides */
+.swiper-slide {
+  transition: transform var(--transition-base) var(--ease-smooth);
+}
+
+/* Custom styling for specific carousel types */
+.carousel-minimal .swiper-pagination {
+  display: none;
+}
+
+.carousel-minimal .swiper-button-prev,
+.carousel-minimal .swiper-button-next {
+  opacity: 0;
+  transition: opacity var(--transition-base) var(--ease-smooth);
+}
+
+.carousel-minimal:hover .swiper-button-prev,
+.carousel-minimal:hover .swiper-button-next {
+  opacity: 1;
+}

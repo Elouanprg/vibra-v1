@@ -1,0 +1,30 @@
+================================================
+  GUIDE D'IMPORT DES IMAGES - VIBRA Services
+================================================
+
+Placez vos photos dans les dossiers suivants :
+
+1. /sonorisation/
+   - Photos d'installations sono (enceintes, tables de mixage, etc.)
+   - Formats acceptés : .webp, .jpg, .png
+   - Taille recommandée : 800x600px minimum
+   - Exemples : sono-1.webp, sono-2.webp, etc.
+
+2. /lumiere/
+   - Photos de mises en lumière (éclairages, ambiances, LED, etc.)
+   - Formats acceptés : .webp, .jpg, .png
+   - Taille recommandée : 800x600px minimum
+   - Exemples : lumiere-1.webp, lumiere-2.webp, etc.
+
+3. /booking-dj/
+   - Photos de DJs en action, platines, performances
+   - Formats acceptés : .webp, .jpg, .png
+   - Taille recommandée : 800x600px minimum
+   - Exemples : dj-1.webp, dj-2.webp, etc.
+
+CONSEIL : Convertissez vos images en WebP pour de meilleures performances.
+Vous pouvez utiliser https://squoosh.app pour la conversion.
+
+Une fois les images ajoutees, modifiez les src dans :
+- evenements-professionnels.html (cartes services)
+- prestations-techniques.html (page detail)
